@@ -3,7 +3,6 @@ title: "About"
 date: 2018-01-03T17:52:01+08:00
 layout: "about"
 menu: "main"
-draft: true
 ---
 
 这个新博客
