@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>五四陈科学院</title>
+    <link>http://blog.54chen.com/</link>
+    <description>Recent content on 五四陈科学院</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Thu, 04 Jan 2018 10:31:17 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.54chen.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>发烧：传说与事实</title>
+      <link>http://blog.54chen.com/post/fever/</link>
+      <pubDate>Thu, 04 Jan 2018 10:31:17 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/fever/</guid>
+      <description>&lt;p&gt;本文翻译自美国西雅图儿童医院。&lt;/p&gt;
+
+&lt;p&gt;原文地址 &lt;a href=&#34;http://www.seattlechildrens.org/medical-conditions/symptom-index/fever-myths-versus-facts/&#34;&gt;http://www.seattlechildrens.org/medical-conditions/symptom-index/fever-myths-versus-facts/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://chen54.b0.upaiyun.com/1127/c10d_bg.jpg&#34; alt=&#34;fever&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;许多父母对于发烧一直错误地相信着传说。他们认为发烧会伤害到孩子。当孩子发烧时，他们担心到失眠。这就是所谓的发烧恐惧症。事实上，发烧是无害的，通常是有帮助的，下面这些事实可以帮助你更好地认识发烧。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>你好，世界！</title>
+      <link>http://blog.54chen.com/post/2018-blog/</link>
+      <pubDate>Wed, 03 Jan 2018 18:25:39 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/2018-blog/</guid>
+      <description>Hello,world!</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://blog.54chen.com/about/</link>
+      <pubDate>Wed, 03 Jan 2018 17:52:01 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/about/</guid>
+      <description>这个新博客 2005年还在大学时，开始写第一篇技术博客，一开始在百度空间，后来08年移动到 http://www.54chen.com ，后来在2014年的时候，想体验一下github来写，就启用了 http://2014.54chen.com 。
+一晃这已经是2018年了，原来的域名又落后了。
+就是这么奇怪，很多当时觉得很先进的东西，后来都落后了。
+第十三个年头，启用这个永不落后的域名 http://blog.54chen.com ，记录的东西将会有：技术经验、儿科、钢琴、等等。
+个人简介 54chen，真名：陈臻。
+2010年加入小米科技。
+关键词：
+rose,riak,rabbitmq,zookeeper,thrift,nuclear,
+senseidb,hadoop,hive,dynamo,
+php extension,nginx module
+天下风云出我辈，一入江湖岁月催. 鸿图霸业谈笑中，不胜人生一场醉. 提剑跨骑挥鬼域，白骨如山鸟惊飞. 尘世如潮人如水，只叹江湖几人回. 过去的经历：
+人人网分布式研究人员（nuclear系统开发者）
+雅虎、淘宝搜索开发工程师
+金山词霸开发工程师
+曾用代号有：cc0cc、零蛋。
+54chen常用的头像：</description>
+    </item>
+    
+  </channel>
+</rss>
