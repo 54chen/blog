@@ -87,6 +87,4 @@ tags: ["piano", "life"]
 
 以上流程之后，基本上下面这样的曲子只要2小时练习即可（出镜:54chen）：
 
-{{% video  "http://ali-v4d.xiaoying.tv/20171231/z7qIvd/3zhe65q878.mp4" "http://ali-v4d.xiaoying.tv/20171231/z7qIvd/3zhe65q878.mp4" "http://ali-v4d.xiaoying.tv/20171231/z7qIvd/3zhe65q878.mp4" %}}
-
-http://xiaoying.tv/v/z7qIvd/1/?fromApp=XiaoYing&toApp=weibo
+点击地址播放 http://xiaoying.tv/v/z7qIvd/1/?fromApp=XiaoYing&toApp=weibo
