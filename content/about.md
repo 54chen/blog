@@ -5,6 +5,9 @@ layout: "about"
 menu: "main"
 ---
 
+Dad,Husband,Blogger,Coder,Work on the server side more than 10 years.
+
+
 这个新博客
 ----------
 
