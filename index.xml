@@ -7,10 +7,39 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
-    <lastBuildDate>Thu, 18 Jan 2018 16:20:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 May 2018 11:33:03 +0800</lastBuildDate>
     
 	<atom:link href="http://blog.54chen.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>小米架构技术峰会在北京成功举办 | 5月14日</title>
+      <link>http://blog.54chen.com/post/arch/</link>
+      <pubDate>Tue, 15 May 2018 11:33:03 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/arch/</guid>
+      <description>&lt;p&gt;2018年5月14日，小米集团信息部架构委员会在北京总参办公区成功举办了小米架构技术峰会。峰会主题为“架构致胜，共掌未来”，将近150名的技术专家齐聚一堂，就技术架构和数据架构方方面面进行了深入的学习和讨论。&lt;/p&gt;
+
+&lt;h4 id=&#34;开场&#34;&gt;开场&lt;/h4&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://wx4.sinaimg.cn/large/663fba41ly1frbsxexncwj21kw11xhdy.jpg&#34; alt=&#34;小米集团信息部总经理王海洲先生进行开场致辞&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;小米集团信息部总经理王海洲先生进行开场致辞&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;小米集团信息部总经理王海洲先生，为峰会做了开场致辞，并代表大会主办方对与会嘉宾表示热烈的欢迎，同时对兄弟部门对本次大会成功举办进行的各项合作表示感谢。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>靠写代码学习什么是区块链</title>
