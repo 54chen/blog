@@ -1,0 +1,14 @@
+git checkout sources
+./hugo new post/new-post.md
+mvim content/post/new-post.md
+./hugo server -D
+./hugo 
+git status
+git add content/post/new-post.md
+git commit -am 'add new post'
+git push origin sources
+./hugo
+mv public/* ../public_temp/
+git checkout master
+./d.sh
+finish!
