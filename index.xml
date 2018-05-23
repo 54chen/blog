@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
-    <lastBuildDate>Tue, 15 May 2018 11:33:03 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 May 2018 10:48:51 +0800</lastBuildDate>
     
 	<atom:link href="http://blog.54chen.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Envoy线程模型</title>
+      <link>http://blog.54chen.com/post/envoy-threading-model/</link>
+      <pubDate>Tue, 22 May 2018 10:48:51 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/envoy-threading-model/</guid>
+      <description>&lt;p&gt;最近在花时间看istio的架构情况，2017年5月，Google、IBM和Lyft发布了开源服务网格框架Istio，提供微服务的连接、管理、监控和安全保护。Istio提供了一个服务间通信的基础设施层，解耦了应用逻辑和服务访问中版本管理、安全防护、故障转移、监控遥测等切面的问题。其中最关键的网络组件envoy，有着举足轻重的作用，是一个高性能的开源L7代理和通信总线。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>小米架构技术峰会在北京成功举办 | 5月14日</title>

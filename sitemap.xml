@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://blog.54chen.com/post/envoy-threading-model/</loc>
+    <lastmod>2018-05-22T10:48:51+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.54chen.com/post/arch/</loc>
     <lastmod>2018-05-15T11:33:03+08:00</lastmod>
   </url>
@@ -62,6 +67,12 @@
   </url>
   
   <url>
+    <loc>http://blog.54chen.com/tags/envoy/</loc>
+    <lastmod>2018-05-22T10:48:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.54chen.com/tags/fever/</loc>
     <lastmod>2018-01-04T10:31:17+08:00</lastmod>
     <priority>0</priority>
@@ -70,6 +81,12 @@
   <url>
     <loc>http://blog.54chen.com/tags/hugo/</loc>
     <lastmod>2018-01-03T18:25:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/istio/</loc>
+    <lastmod>2018-05-22T10:48:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -87,7 +104,7 @@
   
   <url>
     <loc>http://blog.54chen.com/post/</loc>
-    <lastmod>2018-05-15T11:33:03+08:00</lastmod>
+    <lastmod>2018-05-22T10:48:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -105,7 +122,7 @@
   
   <url>
     <loc>http://blog.54chen.com/</loc>
-    <lastmod>2018-05-15T11:33:03+08:00</lastmod>
+    <lastmod>2018-05-22T10:48:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
