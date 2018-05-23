@@ -17,7 +17,7 @@ translated from https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 
 ## 线程预览
 
-{{% figure src="https://cdn-images-1.medium.com/max/1600/1*mNPG4j0QsUk_4J5milHAKQ.png" alt="图1 线程预览" title="线程预览" %}}
+{{% figure src="https://wx3.sinaimg.cn/mw690/663fba41ly1frl9vy37a2j218g10ewm0.jpg" alt="图1 线程预览" title="线程预览" %}}
 
 如图1所示，Envoy使用了三种类型的线程。
 
@@ -57,7 +57,7 @@ translated from https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 
 因为envoy分了主线程和工作线程职责，所以就要求可以在主线程上复杂处理，同时要为每个工作线程搞一个高并发的可用方式。本节站在high level描述envoy的TLS系统。下节描述如何用于处理集群管理。
 
-{{% figure src="https://cdn-images-1.medium.com/max/1600/1*fyx9IJBwbGDVtK_LhwQB6A.png" alt="图2 TLS" title="TLS" %}}
+{{% figure src="https://wx2.sinaimg.cn/mw690/663fba41ly1frl9xeec4rj218g0n1wjh.jpg" alt="图2 TLS" title="TLS" %}}
 
 如之前所述，主线程处理了envoy线程中几乎所有的管理和控制平面功能。（控制平面有一点超载，不过考虑到在envoy线程自身和对比工作线程转发情况，似乎也是合适的。）这是一种常见的模式，主线程处理一些事情，然后用结果更新每个工作线程，并且没有工作线程在过程中需要取锁。
 
@@ -79,7 +79,7 @@ envoy的TLS系统按下面所述运行：
 
 本节会介绍TLS如何做到集群管理。集群管理包括了xDS api处理和/或DNS以及健康检测。
 
-{{% figure src="https://cdn-images-1.medium.com/max/1600/1*R-U8hs34U93Yj1TzbhwE5w.png" alt="图3 集群管理线程" title="图3 集群管理线程" %}}
+{{% figure src="https://wx3.sinaimg.cn/mw690/663fba41ly1frl9yd3xx8j218g0ob7b7.jpg" alt="图3 集群管理线程" title="图3 集群管理线程" %}}
 
 图3显示了整个流程，包括以下组件和步骤：
 
