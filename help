@@ -1,0 +1,6 @@
+./hugo new post/new-zealand-best-place-earth.md
+mvim content/post/new-zealand-best-place-earth.md
+./hugo server -w
+
+
+
