@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -8,13 +8,43 @@
   </url>
   
   <url>
+    <loc>http://blog.54chen.com/post/</loc>
+    <lastmod>2019-05-07T15:10:16+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/</loc>
+    <lastmod>2019-05-07T15:10:16+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.54chen.com/post/okr/</loc>
     <lastmod>2019-04-04T17:27:18+08:00</lastmod>
   </url>
   
   <url>
+    <loc>http://blog.54chen.com/tags/2018/</loc>
+    <lastmod>2019-04-04T00:25:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/2019/</loc>
+    <lastmod>2019-04-04T00:25:39+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.54chen.com/post/2019-predict/</loc>
     <lastmod>2019-04-04T00:25:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/</loc>
+    <lastmod>2019-04-04T00:25:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/micro-service/</loc>
+    <lastmod>2018-06-04T10:08:33+08:00</lastmod>
   </url>
   
   <url>
@@ -28,6 +58,21 @@
   </url>
   
   <url>
+    <loc>http://blog.54chen.com/tags/gdpr/</loc>
+    <lastmod>2018-05-31T11:15:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/envoy/</loc>
+    <lastmod>2018-05-23T14:21:52+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/istio/</loc>
+    <lastmod>2018-05-23T14:21:52+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.54chen.com/post/load-balance/</loc>
     <lastmod>2018-05-23T14:21:52+08:00</lastmod>
   </url>
@@ -38,8 +83,23 @@
   </url>
   
   <url>
+    <loc>http://blog.54chen.com/tags/arch/</loc>
+    <lastmod>2018-05-15T11:33:03+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.54chen.com/post/arch/</loc>
     <lastmod>2018-05-15T11:33:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/blockchain/</loc>
+    <lastmod>2018-01-18T16:20:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/python/</loc>
+    <lastmod>2018-01-18T16:20:57+08:00</lastmod>
   </url>
   
   <url>
@@ -48,13 +108,38 @@
   </url>
   
   <url>
+    <loc>http://blog.54chen.com/tags/life/</loc>
+    <lastmod>2018-01-10T11:34:45+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/piano/</loc>
+    <lastmod>2018-01-10T11:34:45+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.54chen.com/post/piano/</loc>
     <lastmod>2018-01-10T11:34:45+08:00</lastmod>
   </url>
   
   <url>
+    <loc>http://blog.54chen.com/tags/child/</loc>
+    <lastmod>2018-01-04T10:31:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/fever/</loc>
+    <lastmod>2018-01-04T10:31:17+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.54chen.com/post/fever/</loc>
     <lastmod>2018-01-04T10:31:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/hugo/</loc>
+    <lastmod>2018-01-03T18:25:39+08:00</lastmod>
   </url>
   
   <url>
@@ -68,110 +153,7 @@
   </url>
   
   <url>
-    <loc>http://blog.54chen.com/tags/2018/</loc>
-    <lastmod>2019-04-04T00:25:39+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/2019/</loc>
-    <lastmod>2019-04-04T00:25:39+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/arch/</loc>
-    <lastmod>2018-05-15T11:33:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/blockchain/</loc>
-    <lastmod>2018-01-18T16:20:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.54chen.com/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/child/</loc>
-    <lastmod>2018-01-04T10:31:17+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/envoy/</loc>
-    <lastmod>2018-05-23T14:21:52+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/fever/</loc>
-    <lastmod>2018-01-04T10:31:17+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/gdpr/</loc>
-    <lastmod>2018-05-31T11:15:24+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/hugo/</loc>
-    <lastmod>2018-01-03T18:25:39+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/istio/</loc>
-    <lastmod>2018-05-23T14:21:52+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/life/</loc>
-    <lastmod>2018-01-10T11:34:45+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/micro-service/</loc>
-    <lastmod>2018-06-04T10:08:33+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/piano/</loc>
-    <lastmod>2018-01-10T11:34:45+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/post/</loc>
-    <lastmod>2019-05-07T15:10:16+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/python/</loc>
-    <lastmod>2018-01-18T16:20:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/</loc>
-    <lastmod>2019-04-04T00:25:39+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/</loc>
-    <lastmod>2019-05-07T15:10:16+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>
