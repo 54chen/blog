@@ -1,5 +1,5 @@
-    {{ $paginator := .Paginate (where .Data.Pages "Type" "post") (index .Site.Params "paginate" | default 10) }}
-    {{ if ne $paginator.TotalPages 0 }}
+      {{- $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) -}}
+      {{ if ne $paginator.TotalPages 0 }}
       {{ range $paginator.Pages.ByDate.Reverse }}
       <div class="post type-post hentry category-java-ee tag-disruptor tag-thrift"> <h2 class="entry-title"><a href="{{ .Permalink }}" class="post-link">{{ .Title }}</a></h2>
           <span class="author vcard">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read </span>
