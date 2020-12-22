@@ -23,16 +23,10 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
   url = "/"
 
 [[menu.main]]
-  name = "history1(2014-2017)"
+  name = "Before 2018"
   weight = 20
   identifier = "h1"
   url = "http://2014.54chen.com"
-
-[[menu.main]]
-  name = "history2(2005-2014)"
-  weight = 20
-  identifier = "works"
-  url = "http://www.54chen.com"
 
 [[menu.main]]
   name = "Tags"
