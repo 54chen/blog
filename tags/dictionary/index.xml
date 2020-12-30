@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dictionary on 五四陈科学院</title>
+    <link>http://blog.54chen.com/tags/dictionary/</link>
+    <description>Recent content in dictionary on 五四陈科学院</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Wed, 30 Dec 2020 11:00:24 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/tags/dictionary/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Add Dictionary in Mac</title>
+      <link>http://blog.54chen.com/post/mac-add-dictionary/</link>
+      <pubDate>Wed, 30 Dec 2020 11:00:24 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/mac-add-dictionary/</guid>
+      <description>&lt;p&gt;There is a good dictionary application in mac system. But it is not so many good content. So I collected some methods from internet and learn to make a dictionary content by myself.&lt;/p&gt;
+&lt;p&gt;It is not so difficult. Just need 2 tools: 1. Dictionary Development kit(DDK) - which is provided by apple inc. 2.pyglossary - which is a open source tool converting dictionary formats.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
