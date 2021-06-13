@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>软路由 on 五四陈科学院</title>
+    <link>http://blog.54chen.com/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</link>
+    <description>Recent content in 软路由 on 五四陈科学院</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Sun, 13 Jun 2021 21:10:10 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ZTEZXV10B860AV1.1机顶盒刷机转旁路由手记</title>
+      <link>http://blog.54chen.com/post/zteb860av1.1-to-router/</link>
+      <pubDate>Sun, 13 Jun 2021 21:10:10 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/zteb860av1.1-to-router/</guid>
+      <description>&lt;p&gt;每次换宽带，都会遗留下来各种奇形怪状的盒子，ZTEB86AV1.1是几年前的北京电信天翼宽带留下的产物，后来北京移动来抢生意，价格只有四分之一，网速还更快，所以就换了。这些盒子都是标准的技术架构，OS Kernel依靠ARM的一整套方案，有些包着海思的皮，所有的driver+kernel烧到芯片里，上面加上android framework, 所以在网上实际上都可以找到对应的固件来直接刷写到ROM中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.54chen.com/img/post/zte-2.jpg&#34; alt=&#34;zte&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
