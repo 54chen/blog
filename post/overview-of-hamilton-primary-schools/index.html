@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
 
   
-  <title>How to Add Dictionary in Mac</title>
+  <title>Overview of Hamilton Primary Schools</title>
 
   
   
@@ -15,30 +15,27 @@
 
 
   
-  <meta name="author" content="54chen" />
-  <meta name="description" content="There is a good dictionary application in mac system. But it is not so many good content. So I collected some methods from internet and learn to make a dictionary content by myself.
-It is not so difficult. Just need 2 tools: 1. Dictionary Development kit(DDK) - which is provided by apple inc. 2.pyglossary - which is a open source tool converting dictionary formats.
+  <meta name="author" content="John Chen" />
+  <meta name="description" content="I have spent a lot of time on the primary schools choosing for my child. It is really a good result that I have generated a viz to show the details about all the information I found. Thanks for all the suggestions during the production process.
 " />
 
   
   
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@54chen" />
-    <meta name="twitter:title" content="How to Add Dictionary in Mac" />
-    <meta name="twitter:description" content="There is a good dictionary application in mac system. But it is not so many good content. So I collected some methods from internet and learn to make a dictionary content by myself.
-It is not so difficult. Just need 2 tools: 1. Dictionary Development kit(DDK) - which is provided by apple inc. 2.pyglossary - which is a open source tool converting dictionary formats.
+    <meta name="twitter:title" content="Overview of Hamilton Primary Schools" />
+    <meta name="twitter:description" content="I have spent a lot of time on the primary schools choosing for my child. It is really a good result that I have generated a viz to show the details about all the information I found. Thanks for all the suggestions during the production process.
 " />
-    <meta name="twitter:image" content="http://blog.54chen.com/img/cover.jpg" />
+    <meta name="twitter:image" content="http://blog.54chen.com/img/poster.jpg" />
   
 
   
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="How to Add Dictionary in Mac" />
-  <meta property="og:description" content="There is a good dictionary application in mac system. But it is not so many good content. So I collected some methods from internet and learn to make a dictionary content by myself.
-It is not so difficult. Just need 2 tools: 1. Dictionary Development kit(DDK) - which is provided by apple inc. 2.pyglossary - which is a open source tool converting dictionary formats.
+  <meta property="og:title" content="Overview of Hamilton Primary Schools" />
+  <meta property="og:description" content="I have spent a lot of time on the primary schools choosing for my child. It is really a good result that I have generated a viz to show the details about all the information I found. Thanks for all the suggestions during the production process.
 " />
-  <meta property="og:url" content="http://blog.54chen.com/post/mac-add-dictionary/" />
-  <meta property="og:image" content="http://blog.54chen.com/img/cover.jpg" />
+  <meta property="og:url" content="http://blog.54chen.com/post/overview-of-hamilton-primary-schools/" />
+  <meta property="og:image" content="http://blog.54chen.com/img/poster.jpg" />
 
 
 
@@ -46,7 +43,7 @@ It is not so difficult. Just need 2 tools: 1. Dictionary Development kit(DDK) - 
 <meta name="generator" content="Hugo 0.79.1" />
 
 
-<link rel="canonical" href="http://blog.54chen.com/post/mac-add-dictionary/" />
+<link rel="canonical" href="http://blog.54chen.com/post/overview-of-hamilton-primary-schools/" />
 <link rel="alternative" href="http://blog.54chen.com/index.xml" title="五四陈科学院" type="application/atom+xml" />
 
 
@@ -222,68 +219,67 @@ It is not so difficult. Just need 2 tools: 1. Dictionary Development kit(DDK) - 
 
   <section class="main post-detail">
     <header class="post-header">
-      <h1 class="post-title">How to Add Dictionary in Mac</h1>
-      <p class="post-meta">@54chen · Dec 30, 2020 · 2 min read</p>
+      <h1 class="post-title">Overview of Hamilton Primary Schools</h1>
+      <p class="post-meta">@John Chen · Jun 15, 2021 · 1 min read</p>
     </header>
-    <article class="post-content"><p>There is a good dictionary application in mac system. But it is not so many good content. So I collected some methods from internet and learn to make a dictionary content by myself.</p>
-<p>It is not so difficult. Just need 2 tools: 1. Dictionary Development kit(DDK) - which is provided by apple inc. 2.pyglossary - which is a open source tool converting dictionary formats.</p>
-<h2 id="essential-environment">Essential Environment</h2>
-<ol>
-<li>python3</li>
-<li>xcode and xcode command line tool</li>
-<li>download DDK and copy to ~/Developer/Extra/</li>
-<li>git clone pyglossary</li>
-<li>download MDX files, which is a kind of dictionary file used by Mdict. There are lots of people share their dictionaries, so it is easy to get some good dictionaries.</li>
-</ol>
-<h2 id="principle">Principle</h2>
-<p>Pyglossary can convert the MDX file to apple dictionary format. And mdd file is relatively easy to obtain. So the method is to find a MDX dicitonary and convert it to apple format by pyglosary and DDK.</p>
-<h2 id="steps">Steps</h2>
-<h3 id="1-open-terminal">1. open terminal</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cd dict/
-~/Downloads/pyglossary/main.py --write-format<span style="color:#f92672">=</span>AppleDict <span style="color:#e6db74">&#34;~/Downloads/dict/xxx.mdx&#34;</span> xxxx_Dictionary
+    <article class="post-content"><p>I have spent a lot of time on the primary schools choosing for my child. It is really a good result that I have generated a viz to show the details about all the information I found. Thanks for all the suggestions during the production process.</p>
+<p>The following is the tableau public site link, which is slow sometimes.</p>
 
-</code></pre></div><p>xxxx_Dictionary could be any characters including Chinese, which will be showed as the dictionary title when you search word.</p>
-<p>After a long time, the result will be generated in the folder.</p>
-<h3 id="2run-ddk">2.run DDK</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd xxxx_Dictonary 
-make
-</code></pre></div><p>If you have any issues here, it must be because of the xcode environment.</p>
-<p>I also met the problem, which noticed like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">argument list too long: cp
-</code></pre></div><p>Because there are too many mp3 files in a single directory, so I run by my self:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">for</span> i in ./OtherResources/*; <span style="color:#66d9ef">do</span> echo <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span>;  <span style="color:#66d9ef">done</span>
-mv -f objects/dict.dictionary objects/牛津高阶英汉双解词典9.dictionary
-make install
-</code></pre></div><p>Then choose your own dictionary. enjoy it! If you like, you can contact me by <a href="mailto:czhttp@gmail.com">czhttp@gmail.com</a></p>
-<h2 id="screenshot">Screenshot</h2>
-<p><img src="http://blog.54chen.com/img/post/dict.png" alt="dictionary"></p>
-<h2 id="references">References</h2>
-<p>goforward. (2020). Douban. <a href="https://www.douban.com/note/507451268/">https://www.douban.com/note/507451268/</a></p>
-<p>kaihao. (2018). kaihao&rsquo;s Blog. <a href="https://kaihao.io/2018/mdict-to-macos-dictionary/">https://kaihao.io/2018/mdict-to-macos-dictionary/</a></p></article>
+
+
+
+<div class='tableauPlaceholder' id='viz1623769934678' style='position: relative'>
+  <noscript>
+    <a href='#'>
+      <img alt=' '
+        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;HamiltonPrimarySchoolsOverview&#47;Dashboard1&#47;1_rss.png'
+        style='border: none' />
+    </a>
+  </noscript>
+  <object class='tableauViz'  style='display:none;'>
+    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+    <param name='embed_code_version' value='3' />
+    <param name='site_root' value='' />
+    <param name='name' value='HamiltonPrimarySchoolsOverview&#47;Dashboard1' />
+    <param name='tabs' value='no' />
+    <param name='toolbar' value='yes' />
+    <param name='static_image' 
+      value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;HamiltonPrimarySchoolsOverview&#47;Dashboard1&#47;1.png' />
+    <param name='animate_transition' value='yes' />
+    <param name='display_static_image' value='yes' />
+    <param name='display_spinner' value='yes' />
+    <param name='display_overlay' value='yes' />
+    <param name='display_count' value='yes' />
+    <param name='language' value='en' />
+  </object>
+</div>
+<script type='text/javascript'>
+  var divElement = document.getElementById('viz1623769934678');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  vizElement.style.width='1024px';vizElement.style.height='795px';
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
         
-          <li><a href="http://blog.54chen.com/tags/mac"><span class="tag">Mac</span></a></li>
-        
-          <li><a href="http://blog.54chen.com/tags/dictionary"><span class="tag">Dictionary</span></a></li>
+          <li><a href="http://blog.54chen.com/tags/vizs"><span class="tag">Vizs</span></a></li>
         
       </ul>
       
       <div class="next-post">
 	
-	<a class="link-reverse" href="http://blog.54chen.com/post/ikigai/?ref=footer">« Ikigai -- 日本人的生活哲学</a>
-	
 </div>
 
 <div class="previous-post">
 	
-	<a class="link-reverse" href="http://blog.54chen.com/post/new-zealand-best-place-earth/?ref=footer">nz是地球上最棒的地方的59个理由 »</a>
+	<a class="link-reverse" href="http://blog.54chen.com/post/zteb860av1.1-to-router/?ref=footer">ZTEZXV10B860AV1.1机顶盒刷机转旁路由手记 »</a>
 	
 </div>
       <p class="post-copyright">
-      © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.This post was published <strong>167</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
       </p>
     </footer>
     
