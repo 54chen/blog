@@ -4,7 +4,6 @@ author: "54chen"
 cover: "/img/post/zte-1.jpg"
 tags: ["软R", "旁R"]
 date: 2021-06-13T21:10:10+08:00
-draft: true
 ---
 
 每次换宽带，都会遗留下来各种奇形怪状的盒子，ZTEB86AV1.1是几年前的北京电信天翼宽带留下的产物，后来北京移动来抢生意，价格只有四分之一，网速还更快，所以就换了。这些盒子都是标准的技术架构，OS Kernel依靠ARM的一整套方案，有些包着海思的皮，所有的driver+kernel烧到芯片里，上面加上android framework, 所以在网上实际上都可以找到对应的固件来直接刷写到ROM中。

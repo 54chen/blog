@@ -4,7 +4,6 @@ author: "54chen"
 cover: "/img/post/pomodoro.jpeg"
 tags: ["番茄钟工作法", "虚拟机"]
 date: 2021-06-24T22:31:20+08:00
-draft: true
 ---
 
 至此全球疫情之际，不具备在家高效办公能力的同学，可能会被时代淘汰 :)
