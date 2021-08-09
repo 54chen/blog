@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>micro service on 五四陈科学院</title>
+    <link>http://blog.54chen.com/tags/micro-service/</link>
+    <description>Recent content in micro service on 五四陈科学院</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Mon, 04 Jun 2018 10:08:33 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/tags/micro-service/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>微服务架构的十个劣势</title>
+      <link>http://blog.54chen.com/post/micro-service/</link>
+      <pubDate>Mon, 04 Jun 2018 10:08:33 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/micro-service/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;微服务架构在业界有许多定义，但最常被接受的定义是，微服务架构是一种将大型复杂软件系统，通过提供API的办法，分解为更小的模块化部分的方式。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

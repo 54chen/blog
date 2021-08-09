@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>微服务架构的十个劣势</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="54chen" />
+  <meta name="description" content="微服务架构在业界有许多定义，但最常被接受的定义是，微服务架构是一种将大型复杂软件系统，通过提供API的办法，分解为更小的模块化部分的方式。
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="微服务架构的十个劣势" />
+    <meta name="twitter:description" content="微服务架构在业界有许多定义，但最常被接受的定义是，微服务架构是一种将大型复杂软件系统，通过提供API的办法，分解为更小的模块化部分的方式。
+" />
+    <meta name="twitter:image" content="http://blog.54chen.com/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="微服务架构的十个劣势" />
+  <meta property="og:description" content="微服务架构在业界有许多定义，但最常被接受的定义是，微服务架构是一种将大型复杂软件系统，通过提供API的办法，分解为更小的模块化部分的方式。
+" />
+  <meta property="og:url" content="http://blog.54chen.com/post/micro-service/" />
+  <meta property="og:image" content="http://blog.54chen.com/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+
+<link rel="canonical" href="http://blog.54chen.com/post/micro-service/" />
+<link rel="alternative" href="http://blog.54chen.com/index.xml" title="五四陈科学院" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<link href="http://blog.54chen.com/img/favicon-16x16.png" rel="icon">
+<link rel="apple-touch-icon" href="http://blog.54chen.com/img/favicon-32x32.png" />
+<link rel="shortcut icon" href="http://blog.54chen.com/img/favicon.ico" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://blog.54chen.com/css/bundle.css?1" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://blog.54chen.com/img/logo.jpg" alt="Avatar">
+  
+  <h2 class="title">五四陈科学院</h2>
+  
+  <p class="subtitle">相信科学，分享技术</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://blog.54chen.com/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://2014.54chen.com">Before 2018</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/tags/">Tags</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/about/">About</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+	  <img src="http://blog.54chen.com/img/post/mp.png" width="288px">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:cc0cc@126.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/54chen" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/img/post/mp.png" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">微服务架构的十个劣势</h1>
+      <p class="post-meta">@54chen · Jun 4, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content"><!-- raw HTML omitted -->
+<p>微服务架构在业界有许多定义，但最常被接受的定义是，微服务架构是一种将大型复杂软件系统，通过提供API的办法，分解为更小的模块化部分的方式。</p>
+<p>建立一个具有微服务体系结构的解耦系统有很多好处，从一开始就开始使用这种分布式和分离式体系结构来构建整个系统，已经成为一种行业规范。基于云的应用程序的架构类型非常适用，已是非常确定的事实。</p>
+<p>尽管它带来了实实在在的好处，但同样重要的是要注意，这种类型的体系结构还有一些缺点，需要在系统架构和设计的初始阶段多搞一些才靠谱。因此，需要更细致的方法来了解您是否真的需要从一开始就构建一个分离的系统。</p>
+<p>有时候最好从单体应用程序开始，然后花时间将不同的功能在服务变化过程中分解为服务。因此，我们来看看微服务体系结构的一些常见缺点，它将帮助您获得更均衡的观点：</p>
+<ol>
+<li>
+<p>难以维护 - 基于微服务的系统很难维护和重构。在单体系统中，只需要一个代码库进行更改，而在基于微服务的系统中，则会有许多不同的代码库需要开发和维护。</p>
+</li>
+<li>
+<p>写代码复杂 - 必须承认，建立一个分离的分布式系统并不是小菜一碟。它需要细致的系统规划和设计，您必须将许多接口代码层组合在一起。然后还可能会出现服务没有响应的情况，因此你需要编写代码和检查来处理各种情况。</p>
+</li>
+<li>
+<p>部署和系统管理员可能会很痛苦 - 即使只部署一个应用程序，有时也会变得非常痛苦，并且经常会需要由运维团队来救火。现在微服务会将这个问题按服务数量来扩展。没有合适的运维团队，建立和管理基于微服务的系统几乎是不可能的。</p>
+</li>
+<li>
+<p>数据库管理 - 虽然有可能你有一个单一的数据库与所有的服务对话，但即便是这样，也需要明显复杂的逻辑和非常严密的代码来维护事务。也有些情况下，单个服务可能需要拥有自己的数据库，并且管理如此多的小型数据库可能非常麻烦。</p>
+</li>
+<li>
+<p>需要更多的人力 - 微型服务架构会导致太多与系统一起增长的移动部件，并且管理所有这些接口移动部件，与维护单体系统所需的团队相比，您需要拥有更大的团队。</p>
+</li>
+<li>
+<p>不同的技术堆栈 - 尽管最初可能不需要长期只能使用特定的技术栈，但随着技术栈数量的增加，管理它们的努力和工程专业知识也会增加。</p>
+</li>
+<li>
+<p>跟踪错误很难 - 跟踪应用程序性能和管理日志或发现错误非常困难。在单体系统中，跟踪、识别和修复错误非常简单。</p>
+</li>
+<li>
+<p>性能取决于网络影响 - 由于大多数服务通过网络相互通信，所以系统的性能取决于底层网络的强度。</p>
+</li>
+<li>
+<p>改变接口会使事情变得复杂 - 为了使松散耦合的服务系统运行良好，每个API的一开始的设计都需要很到位。虽然这样子的系统，故障是孤立的，但仍然在api变化时，可能会对其他功能产生灾难性的级联影响。</p>
+</li>
+<li>
+<p>测试成为一项挑战 - 测试单体系统要容易得多，但要测试基于解耦服务的系统，意味着要为每个单独的API执全局的性能、探索性、功能性和回归测试。对于手动QA工程师来说同样困难，而且为这样的系统构建和维护自动化测试套件本质上也是相当具有挑战性的。</p>
+</li>
+</ol>
+<p>所以更有效来讲，您需要一个战略和一个专家团队来执行该策略，以解决构建微服务系统带来的这些问题。有适当的地方有了正确的自动化、正确的工具和团队，许多这些缺点可以相当轻松地解决。 我们Enpointer在所有我们所从事的产品中都是微服务架构的支持者。 因此基于微服务架构的专业人员绝对可以搞定我们刚才所描述的缺点，但对事物有一个平衡的看法是有帮助的，这样下一次您设计新产品的架构时，您就可以获得更全面和更具质感的理解。</p>
+<p>translated from <a href="https://enpointer.com/blog/10-disadvantages-of-micro-services-architecture/">https://enpointer.com/blog/10-disadvantages-of-micro-services-architecture/</a></p>
+<p>54chen注：微服务有许多难点，其中的关键，是模块间关系表达、模块间负载均衡、模块问题快速发现和定位。</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://blog.54chen.com/tags/micro-service"><span class="tag">Micro Service</span></a></li>
+        
+      </ul>
+      
+      <div class="next-post">
+	
+	<a class="link-reverse" href="http://blog.54chen.com/post/2019-predict/?ref=footer">« 54chen的2018总结和2019预测</a>
+	
+</div>
+
+<div class="previous-post">
+	
+	<a class="link-reverse" href="http://blog.54chen.com/post/gdpr/?ref=footer">13件关于GDPR的事 »</a>
+	
+</div>
+      <p class="post-copyright">
+      © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.This post was published <strong>1162</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2021 五四陈科学院</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://blog.54chen.com/js/bundle.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-6341757-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>

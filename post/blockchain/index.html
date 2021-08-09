@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>靠写代码学习什么是区块链</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="54chen" />
+  <meta name="description" content="最快学会区块链是如何工作的办法是写代码构建一个。
+Translate from https://hackernoon.com/learn-blockchains-by-building-one-117428612f46
+你在这里是因为和我一样对加密货币的兴起感到激动。而且你想知道区块链是如何工作的－－也就是区块链背后的基础技术。
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="靠写代码学习什么是区块链" />
+    <meta name="twitter:description" content="最快学会区块链是如何工作的办法是写代码构建一个。
+Translate from https://hackernoon.com/learn-blockchains-by-building-one-117428612f46
+你在这里是因为和我一样对加密货币的兴起感到激动。而且你想知道区块链是如何工作的－－也就是区块链背后的基础技术。
+" />
+    <meta name="twitter:image" content="http://blog.54chen.com/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="靠写代码学习什么是区块链" />
+  <meta property="og:description" content="最快学会区块链是如何工作的办法是写代码构建一个。
+Translate from https://hackernoon.com/learn-blockchains-by-building-one-117428612f46
+你在这里是因为和我一样对加密货币的兴起感到激动。而且你想知道区块链是如何工作的－－也就是区块链背后的基础技术。
+" />
+  <meta property="og:url" content="http://blog.54chen.com/post/blockchain/" />
+  <meta property="og:image" content="http://blog.54chen.com/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+
+<link rel="canonical" href="http://blog.54chen.com/post/blockchain/" />
+<link rel="alternative" href="http://blog.54chen.com/index.xml" title="五四陈科学院" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<link href="http://blog.54chen.com/img/favicon-16x16.png" rel="icon">
+<link rel="apple-touch-icon" href="http://blog.54chen.com/img/favicon-32x32.png" />
+<link rel="shortcut icon" href="http://blog.54chen.com/img/favicon.ico" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://blog.54chen.com/css/bundle.css?1" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://blog.54chen.com/img/logo.jpg" alt="Avatar">
+  
+  <h2 class="title">五四陈科学院</h2>
+  
+  <p class="subtitle">相信科学，分享技术</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://blog.54chen.com/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://2014.54chen.com">Before 2018</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/tags/">Tags</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/about/">About</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+	  <img src="http://blog.54chen.com/img/post/mp.png" width="288px">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:cc0cc@126.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/54chen" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/img/post/mp.png" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">靠写代码学习什么是区块链</h1>
+      <p class="post-meta">@54chen · Jan 18, 2018 · 5 min read</p>
+    </header>
+    <article class="post-content"><p>最快学会区块链是如何工作的办法是写代码构建一个。</p>
+<p>Translate from <a href="https://hackernoon.com/learn-blockchains-by-building-one-117428612f46">https://hackernoon.com/learn-blockchains-by-building-one-117428612f46</a></p>
+<p>你在这里是因为和我一样对加密货币的兴起感到激动。而且你想知道区块链是如何工作的－－也就是区块链背后的基础技术。</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*zutLn_-fZZhy7Ari-x-JWQ.jpeg" alt="blockchain"></p>
+<p>但是要理解区块链并非易事，至少对我是这样的。我艰难浏览了大量的视频，学了好些不完整的教程，因为例子太少深受打击。</p>
+<p>我喜欢靠行动来学习。这使我在代码级别来思考这个问题，通常学得更牢。如果你也这样，在看完本文后你将拥有一个根据其工作原理完整写好的区块链。</p>
+<h2 id="开始之前">开始之前</h2>
+<p>记住区块链是由名字叫blocks的东东按不可变的顺序链在一起的记录。它们可以包含交易、文件或任何你想要的数据。重要的是它们用hash链接到一起。</p>
+<p>如果你不确定什么是hash，点这里有个解释 <a href="https://learncryptography.com/hash-functions/what-are-hash-functions">https://learncryptography.com/hash-functions/what-are-hash-functions</a></p>
+<p>**本文的目标读者是？**你需要能轻松地读和写些基础的python，最好能理解http请求是如何工作的，因为我们将为基于http来建立区块链。</p>
+<p>**我需要啥环境？**确保安装了python3.6以上（带pip）。同时需要安装Flask，最爽的http请求库。</p>
+<p><!-- raw HTML omitted --> pip install Flask==0.12.2 requests==2.18.4 <!-- raw HTML omitted --></p>
+<p>还有，你需要一个http客户端，postman或者curl都行。其他啥能用的也行。</p>
+<p><strong>最终的代码在哪？</strong> <a href="https://github.com/dvf/blockchain">https://github.com/dvf/blockchain</a></p>
+<h2 id="step1-建立区块链">step1 建立区块链</h2>
+<p>打开你喜欢的文本编辑器或者IDE，我个人比较喜欢PyCharm。新建一个文件，叫做 blockchain.py。我们只用一个文件，如果你搞丢了，可以随时到github里找。</p>
+<h3 id="表示区块链">表示区块链</h3>
+<p>我们将建一个Blockchain类，构造函数里初始化一个空列表（用来存我们的blockchain），初始化另一个用来存交易。下面是这个类的大概架子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Blockchain</span>(object):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        self<span style="color:#f92672">.</span>chain <span style="color:#f92672">=</span> []
+        self<span style="color:#f92672">.</span>current_transactions <span style="color:#f92672">=</span> []
+        
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">new_block</span>(self):
+        <span style="color:#75715e"># 创建新块，加入到链条中</span>
+        <span style="color:#66d9ef">pass</span>
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">new_transaction</span>(self):
+        <span style="color:#75715e"># 添加一次新的交易到交易列表中</span>
+        <span style="color:#66d9ef">pass</span>
+    
+    <span style="color:#a6e22e">@staticmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hash</span>(block):
+        <span style="color:#75715e"># 将一个块hash掉</span>
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#a6e22e">@property</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">last_block</span>(self):
+        <span style="color:#75715e"># 返回链条中的最后一个块</span>
+        <span style="color:#66d9ef">pass</span>
+</code></pre></div><p>Blockchain类大概架子</p>
+<p>BlockChain类主要是用来管理链条。它将保存交易，还需要一些添加新区块到链条的helper方法。让我们开始添砖加瓦。</p>
+<h3 id="一个区块看起来什么样">一个区块看起来什么样？</h3>
+<p>每个块都有一个索引、一个unix timestamp、一个交易列表、一个证明（更多稍后介绍），以及上一个块的hash。</p>
+<p>一个单独的区块长下面这样：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">block <span style="color:#f92672">=</span> {
+    <span style="color:#e6db74">&#39;index&#39;</span>: <span style="color:#ae81ff">1</span>,
+    <span style="color:#e6db74">&#39;timestamp&#39;</span>: <span style="color:#ae81ff">1506057125.900785</span>,
+    <span style="color:#e6db74">&#39;transactions&#39;</span>: [
+        {
+            <span style="color:#e6db74">&#39;sender&#39;</span>: <span style="color:#e6db74">&#34;8527147fe1f5426f9dd545de4b27ee00&#34;</span>,
+            <span style="color:#e6db74">&#39;recipient&#39;</span>: <span style="color:#e6db74">&#34;a77f5cdfa2934df3954a5c7c7da5df1f&#34;</span>,
+            <span style="color:#e6db74">&#39;amount&#39;</span>: <span style="color:#ae81ff">5</span>,
+        }
+    ],
+    <span style="color:#e6db74">&#39;proof&#39;</span>: <span style="color:#ae81ff">324984774000</span>,
+    <span style="color:#e6db74">&#39;previous_hash&#39;</span>: <span style="color:#e6db74">&#34;2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824&#34;</span>
+}
+</code></pre></div><p>我们的区块链中的一个块的例子</p>
+<p>每个新块除了自己的信息外，还有上一块的hash，在这一点上，链条的意义明显。<em><strong>这是至关重要的，因为这是区块链不可变性的原因：<em><strong>如果攻击者损坏链中较早的块，后续</strong></em>所有</strong></em>块都将包含不正确的哈希值。</p>
+<p>理解了没？要是还没理解，花点时间想一想－－这是区块链背后的核心思想。</p>
+<h3 id="将交易加入区块中">将交易加入区块中</h3>
+<p>我们要准备一种方法将交易加到区块里。我们的new_transaction方法主要责任就是干这个，而且非常简单：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Blockchain</span>(object):
+    <span style="color:#f92672">...</span>
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">new_transaction</span>(self, sender, recipient, amount):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        创建一个新的交易，交给下一个开采出来的块
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        :param sender: &lt;str&gt; 发出人地址
+</span><span style="color:#e6db74">        :param recipient: &lt;str&gt; 接收人地址
+</span><span style="color:#e6db74">        :param amount: &lt;int&gt; 金额
+</span><span style="color:#e6db74">        :return: &lt;int&gt; 保存这一次交易的块的索引
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+
+        self<span style="color:#f92672">.</span>current_transactions<span style="color:#f92672">.</span>append({
+            <span style="color:#e6db74">&#39;sender&#39;</span>: sender,
+            <span style="color:#e6db74">&#39;recipient&#39;</span>: recipient,
+            <span style="color:#e6db74">&#39;amount&#39;</span>: amount,
+        })
+
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>last_block[<span style="color:#e6db74">&#39;index&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p>new_transaction之后，添加一个交易到列表，返回这个交易将会被添加的区块索引，也就是下一个将被开采的区块。对于用户提交交易来讲，后面将很有用。</p>
+<h3 id="建新的区块">建新的区块</h3>
+<p>当我们的Blockchain被实例化的时候，需要喂给它一个起源区块－－这种块没有前任。我们同样需要添加一个“证据”给起源块，作为开采的结果，或者说是干活的证据。我们后面再讲细一些挖矿的事。</p>
+<p>除了在构造函数里生成起源块外，还要填充new_block\new_transaction\hash：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> time
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Blockchain</span>(object):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        self<span style="color:#f92672">.</span>current_transactions <span style="color:#f92672">=</span> []
+        self<span style="color:#f92672">.</span>chain <span style="color:#f92672">=</span> []
+
+        <span style="color:#75715e"># 创建起源区块</span>
+        self<span style="color:#f92672">.</span>new_block(previous_hash<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, proof<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">new_block</span>(self, proof, previous_hash<span style="color:#f92672">=</span>None):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        在链条中创建一个新的块
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        :param proof: &lt;int&gt; 靠PoW算法给出来的proof值
+</span><span style="color:#e6db74">        :param previous_hash: (Optional) &lt;str&gt; 前一块的hash值
+</span><span style="color:#e6db74">        :return: &lt;dict&gt; 新块
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+
+        block <span style="color:#f92672">=</span> {
+            <span style="color:#e6db74">&#39;index&#39;</span>: len(self<span style="color:#f92672">.</span>chain) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>,
+            <span style="color:#e6db74">&#39;timestamp&#39;</span>: time(),
+            <span style="color:#e6db74">&#39;transactions&#39;</span>: self<span style="color:#f92672">.</span>current_transactions,
+            <span style="color:#e6db74">&#39;proof&#39;</span>: proof,
+            <span style="color:#e6db74">&#39;previous_hash&#39;</span>: previous_hash <span style="color:#f92672">or</span> self<span style="color:#f92672">.</span>hash(self<span style="color:#f92672">.</span>chain[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]),
+        }
+
+        <span style="color:#75715e"># 重置当前的交易列表</span>
+        self<span style="color:#f92672">.</span>current_transactions <span style="color:#f92672">=</span> []
+
+        self<span style="color:#f92672">.</span>chain<span style="color:#f92672">.</span>append(block)
+        <span style="color:#66d9ef">return</span> block
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">new_transaction</span>(self, sender, recipient, amount):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        创建一个新的交易，交给下一个开采出来的块
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        :param sender: &lt;str&gt; 发出人地址
+</span><span style="color:#e6db74">        :param recipient: &lt;str&gt; 接收人地址
+</span><span style="color:#e6db74">        :param amount: &lt;int&gt; 金额
+</span><span style="color:#e6db74">        :return: &lt;int&gt; 保存这一次交易的块的索引
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>current_transactions<span style="color:#f92672">.</span>append({
+            <span style="color:#e6db74">&#39;sender&#39;</span>: sender,
+            <span style="color:#e6db74">&#39;recipient&#39;</span>: recipient,
+            <span style="color:#e6db74">&#39;amount&#39;</span>: amount,
+        })
+
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>last_block[<span style="color:#e6db74">&#39;index&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+
+    <span style="color:#a6e22e">@property</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">last_block</span>(self):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>chain[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+
+    <span style="color:#a6e22e">@staticmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hash</span>(block):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        给一个块创建一个sha-256的hash值
+</span><span style="color:#e6db74">        :param block: &lt;dict&gt; 整个块
+</span><span style="color:#e6db74">        :return: &lt;str&gt;
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+
+        <span style="color:#75715e"># 我们必须确保dict是有序的，否则会得到不一致的hash值</span>
+        block_string <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps(block, sort_keys<span style="color:#f92672">=</span>True)<span style="color:#f92672">.</span>encode()
+        <span style="color:#66d9ef">return</span> hashlib<span style="color:#f92672">.</span>sha256(block_string)<span style="color:#f92672">.</span>hexdigest()
+</code></pre></div><p>上述应该也很简单，我添加了一些说明和注释让意思更清楚。我们几乎完成了表达我们的区块链。但是现在你一定想知道新块怎么建立、打造或者开采的。</p>
+<h3 id="理解干活的证据">理解干活的证据</h3>
+<p>干活的证据（PoW）是指新块如何在区块链上建立或开采。PoW的目标是找到一个数字来解决这个问题。这个数字必须是对网络上任何人都难于发现但易于验证－－从计算机角度。这是PoW背后的核心思想。</p>
+<p>为了帮助理解，我们来看一个非常简单的例子。</p>
+<p>我们定义一个hash，有一系列的整型x乘以另一个y结果必须以0结尾。那就有，hash(x*y)=ac23dc&hellip;0。对于这个简单的例子，我们让x=5。用python实现的话：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> hashlib <span style="color:#f92672">import</span> sha256
+x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># 这里还不知道y应该是多少</span>
+<span style="color:#66d9ef">while</span> sha256(f<span style="color:#e6db74">&#39;{x*y}&#39;</span><span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;0&#34;</span>:
+    y <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;The solution is y = {y}&#39;</span>)
+</code></pre></div><p>这里的答案是y=21。因为，这里产生的hash结果是0：</p>
+<p><!-- raw HTML omitted -->hash(5 * 21) = 1253e9373e&hellip;5e3600155e860<!-- raw HTML omitted --></p>
+<p>比特币里，PoW算法叫做Hashcash。这并不比上述基础例子的算法有什么大不同。这是矿工为了创建一个新区块比赛答题的算法。一般情况，难度决定于在一个字符串中找多少个字。矿工解出来后会得到一个币－－放到交易记录中。</p>
+<p>网络可以很简单验证他们的结果。</p>
+<h3 id="实现基本的pow">实现基本的PoW</h3>
+<p>让我们来给我们的区块链实现一个相似的算法。我们的规则和前面的例子类似：</p>
+<p><!-- raw HTML omitted -->找到一个数字p，可以和前一块的结果一起hash后，产生以4个0开头的新hash<!-- raw HTML omitted --></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
+<span style="color:#f92672">import</span> json
+
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> uuid <span style="color:#f92672">import</span> uuid4
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Blockchain</span>(object):
+    <span style="color:#f92672">...</span>
+        
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">proof_of_work</span>(self, last_proof):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Simple Proof of Work Algorithm:
+</span><span style="color:#e6db74">        简单的PoW算法
+</span><span style="color:#e6db74">         - 找到一个数字 p&#39; ，使得 hash(pp&#39;) 的结果里以4个0开头，p是上一块里的p&#39;
+</span><span style="color:#e6db74">         - p是上一块的proof值，p&#39;是新的proof
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        :param last_proof: &lt;int&gt;
+</span><span style="color:#e6db74">        :return: &lt;int&gt;
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+
+        proof <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">while</span> self<span style="color:#f92672">.</span>valid_proof(last_proof, proof) <span style="color:#f92672">is</span> False:
+            proof <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+
+        <span style="color:#66d9ef">return</span> proof
+
+    <span style="color:#a6e22e">@staticmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">valid_proof</span>(last_proof, proof):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        验证proof：hash(last_proof,proof)是否以4个0开头
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        :param last_proof: &lt;int&gt; 上一个roof
+</span><span style="color:#e6db74">        :param proof: &lt;int&gt; 当前的 Proof
+</span><span style="color:#e6db74">        :return: &lt;bool&gt; True为正确.
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+
+        guess <span style="color:#f92672">=</span> f<span style="color:#e6db74">&#39;{last_proof}{proof}&#39;</span><span style="color:#f92672">.</span>encode()
+        guess_hash <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256(guess)<span style="color:#f92672">.</span>hexdigest()
+        <span style="color:#66d9ef">return</span> guess_hash[:<span style="color:#ae81ff">4</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;0000&#34;</span>
+</code></pre></div><p>为了调整算法难度，可以修改需要的0的个数。4是合适的数量。你会发现，加一个0就可导致找到答案所需时间有巨大差异。</p>
+<p>我们的类基本完成了，现在准备开始通过http进行交互。</p>
+<h2 id="step2-我们的区块链api">step2 我们的区块链API</h2>
+<p>我们计划使用python flask框架。它是一个可以让我们容易将端口映射到python函数的小框架。这样就可以让我们同我们的区块链通过web的http请求来通讯。</p>
+<p>我们创建三个方法：</p>
+<ul>
+<li>/transactions/new  给一个区块创建一个新的交易</li>
+<li>/mine 告诉服务器挖出来一个新块</li>
+<li>/chain 返回整个区块链</li>
+</ul>
+<h3 id="安装flask">安装flask</h3>
+<p>我们的 server 将会在我们的区块链网络里成为一个单独节点。让我们搞一些样板代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">from</span> textwrap <span style="color:#f92672">import</span> dedent
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> uuid <span style="color:#f92672">import</span> uuid4
+
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Blockchain</span>(object):
+    <span style="color:#f92672">...</span>
+
+
+<span style="color:#75715e"># Instantiate our Node</span>
+app <span style="color:#f92672">=</span> Flask(__name__)
+
+<span style="color:#75715e"># Generate a globally unique address for this node</span>
+node_identifier <span style="color:#f92672">=</span> str(uuid4())<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;-&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)
+
+<span style="color:#75715e"># Instantiate the Blockchain</span>
+blockchain <span style="color:#f92672">=</span> Blockchain()
+
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/mine&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mine</span>():
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;We&#39;ll mine a new Block&#34;</span>
+  
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/transactions/new&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">new_transaction</span>():
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;We&#39;ll add a new transaction&#34;</span>
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/chain&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">full_chain</span>():
+    response <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#39;chain&#39;</span>: blockchain<span style="color:#f92672">.</span>chain,
+        <span style="color:#e6db74">&#39;length&#39;</span>: len(blockchain<span style="color:#f92672">.</span>chain),
+    }
+    <span style="color:#66d9ef">return</span> jsonify(response), <span style="color:#ae81ff">200</span>
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    app<span style="color:#f92672">.</span>run(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;0.0.0.0&#39;</span>, port<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>)
+</code></pre></div><p>关于上面的代码的一些解释：</p>
+<ul>
+<li>15行 实例化节点。更多参考flask</li>
+<li>18行 给我们的节点取一个随机名字</li>
+<li>21行 实例化我们的Blockchain类</li>
+<li>24-26行 创建/mine节点,接收get请求</li>
+<li>28-30行 创建/trasaction/new节点，接收post请求，因为我们要给它发数据</li>
+<li>32-38行 创建/chain节点，返回全部的区块链</li>
+<li>40-41行 在5000端口上跑起来server</li>
+</ul>
+<h3 id="交易节点">交易节点</h3>
+<p>这是一次交易看起来的样子，用户发给server下面的数据：</p>
+<!-- raw HTML omitted -->
+<p>因为我们已经有类和方法来给一个块添加交易，剩下的简单了。我们写一个方法添加交易：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">from</span> textwrap <span style="color:#f92672">import</span> dedent
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> uuid <span style="color:#f92672">import</span> uuid4
+
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, jsonify, request
+
+<span style="color:#f92672">...</span>
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/transactions/new&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">new_transaction</span>():
+    values <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>get_json()
+
+    <span style="color:#75715e"># Check that the required fields are in the POST&#39;ed data</span>
+    required <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;sender&#39;</span>, <span style="color:#e6db74">&#39;recipient&#39;</span>, <span style="color:#e6db74">&#39;amount&#39;</span>]
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> all(k <span style="color:#f92672">in</span> values <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> required):
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Missing values&#39;</span>, <span style="color:#ae81ff">400</span>
+
+    <span style="color:#75715e"># Create a new Transaction</span>
+    index <span style="color:#f92672">=</span> blockchain<span style="color:#f92672">.</span>new_transaction(values[<span style="color:#e6db74">&#39;sender&#39;</span>], values[<span style="color:#e6db74">&#39;recipient&#39;</span>], values[<span style="color:#e6db74">&#39;amount&#39;</span>])
+
+    response <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;message&#39;</span>: f<span style="color:#e6db74">&#39;Transaction will be added to Block {index}&#39;</span>}
+    <span style="color:#66d9ef">return</span> jsonify(response), <span style="color:#ae81ff">201</span>
+</code></pre></div><h3 id="挖矿节点">挖矿节点</h3>
+<p>我们的挖矿节点是魔法发生的地方，同样也简单。它要做三件事：</p>
+<ol>
+<li>计算PoW</li>
+<li>靠给交易信息里加同意给我们1个币来奖励矿工</li>
+<li>靠把老的加到链条里来组织新的块</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
+<span style="color:#f92672">import</span> json
+
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> uuid <span style="color:#f92672">import</span> uuid4
+
+<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, jsonify, request
+
+<span style="color:#f92672">...</span>
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/mine&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mine</span>():
+    <span style="color:#75715e"># 这里跑pow算法取到下一个proof值</span>
+    last_block <span style="color:#f92672">=</span> blockchain<span style="color:#f92672">.</span>last_block
+    last_proof <span style="color:#f92672">=</span> last_block[<span style="color:#e6db74">&#39;proof&#39;</span>]
+    proof <span style="color:#f92672">=</span> blockchain<span style="color:#f92672">.</span>proof_of_work(last_proof)
+
+    <span style="color:#75715e"># 因为找到proof我们必须接收一个奖励 </span>
+    <span style="color:#75715e"># 发送方写0表示这个节点挖了新币</span>
+    blockchain<span style="color:#f92672">.</span>new_transaction(
+        sender<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span>,
+        recipient<span style="color:#f92672">=</span>node_identifier,
+        amount<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+    )
+
+    <span style="color:#75715e"># 把块加到链条中完成组装</span>
+    previous_hash <span style="color:#f92672">=</span> blockchain<span style="color:#f92672">.</span>hash(last_block)
+    block <span style="color:#f92672">=</span> blockchain<span style="color:#f92672">.</span>new_block(proof, previous_hash)
+
+    response <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#39;message&#39;</span>: <span style="color:#e6db74">&#34;New Block Forged&#34;</span>,
+        <span style="color:#e6db74">&#39;index&#39;</span>: block[<span style="color:#e6db74">&#39;index&#39;</span>],
+        <span style="color:#e6db74">&#39;transactions&#39;</span>: block[<span style="color:#e6db74">&#39;transactions&#39;</span>],
+        <span style="color:#e6db74">&#39;proof&#39;</span>: block[<span style="color:#e6db74">&#39;proof&#39;</span>],
+        <span style="color:#e6db74">&#39;previous_hash&#39;</span>: block[<span style="color:#e6db74">&#39;previous_hash&#39;</span>],
+    }
+    <span style="color:#66d9ef">return</span> jsonify(response), <span style="color:#ae81ff">200</span>
+</code></pre></div><p>注意被挖的块的接收者是我们节点的地址。并且大多数我们做的事情只是与我们Blockchain类里的方法相互调用。所以，我们做到了，我们可以开始同我们的区块链进行交互了。</p>
+<h2 id="step3-与我们的区块链进行交互">step3 与我们的区块链进行交互</h2>
+<p>你可以通过网络使用老式的cURL或者Postman进行交互。</p>
+<p>先启动server:</p>
+<!-- raw HTML omitted -->
+<p>让我们尝试通过get请求挖一块 http://localhost:5000/mine</p>
+<!-- raw HTML omitted -->
+<p>让我们在body里包含交易结构发起post请求到 http://localhost:5000/transactions/new 创建一次新的交易：</p>
+<!-- raw HTML omitted -->
+<p>如果你没有用postman，也可用curl发起相同的请求：</p>
+<!-- raw HTML omitted -->
+<p>我重启我的server，挖2个块出来，总共3块了。让我们看一下完整的链条 http://localhost:5000/chain ：</p>
+<!-- raw HTML omitted -->
+<h2 id="step4-达成共识">step4 达成共识</h2>
+<p>这点非常酷。靠接收交易和允许我们开采新块，我们已经拥有一个基础的区块链了。但是区块链的本意是去中心化。如果需要去中心化，那究竟要如何做才能使所有节点都有相同的链条呢？这被称为共识问题，如果我们想在网络里多个节点的话，那需要实现一个共识算法</p>
+<h3 id="注册新节点">注册新节点</h3>
+<p>在实现共识算法前，我们需要一个方法，让网络上相邻节点之前互相知道。我们网络上的每个节点都应该保存其他节点的登记信息。这样的话我们需要更多的http请求节点：</p>
+<ol>
+<li>/nodes/register 通过url接收一系列的新节点</li>
+<li>/nodes/resolve  实现我们的共识算法，解决冲突－－确保每个节点都有正确的链条</li>
+</ol>
+<p>我们需要修改一下Blockchain类的构造函数，提现一个方法出来注册节点：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">...</span>
+<span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> urlparse
+<span style="color:#f92672">...</span>
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Blockchain</span>(object):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        <span style="color:#f92672">...</span>
+        self<span style="color:#f92672">.</span>nodes <span style="color:#f92672">=</span> set()
+        <span style="color:#f92672">...</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register_node</span>(self, address):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        添加新节点到节点列表中
+</span><span style="color:#e6db74">        :param address: &lt;str&gt; Address of node. Eg. &#39;http://192.168.0.5:5000&#39;
+</span><span style="color:#e6db74">        :return: None
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+
+        parsed_url <span style="color:#f92672">=</span> urlparse(address)
+        self<span style="color:#f92672">.</span>nodes<span style="color:#f92672">.</span>add(parsed_url<span style="color:#f92672">.</span>netloc)
+</code></pre></div><p>注意代码中我们使用了一个set来保存节点的列表。这一个廉价的确保新添加节点时幂等的方法－－意味着无论你添加一个指定的节点多少次，只会在里面出现一次。</p>
+<h3 id="实现共识算法">实现共识算法</h3>
+<p>上面提到的，冲突是指一个节点与另一个节点有着不同的链条。为了解决冲突，我们制定了一个规则: 哪个验证过的链最长，哪个有效。换句话说，网络中最长的一条链就是真实的链。用这个算法，在我们网络中的节点间达成共识。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">...</span>
+<span style="color:#f92672">import</span> requests
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Blockchain</span>(object)
+    <span style="color:#f92672">...</span>
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">valid_chain</span>(self, chain):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        确定给出的链条是否合法
+</span><span style="color:#e6db74">        :param chain: &lt;list&gt; A blockchain
+</span><span style="color:#e6db74">        :return: &lt;bool&gt; True if valid, False if not
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+
+        last_block <span style="color:#f92672">=</span> chain[<span style="color:#ae81ff">0</span>]
+        current_index <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+        <span style="color:#66d9ef">while</span> current_index <span style="color:#f92672">&lt;</span> len(chain):
+            block <span style="color:#f92672">=</span> chain[current_index]
+            <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;{last_block}&#39;</span>)
+            <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#39;{block}&#39;</span>)
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">-----------</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+            <span style="color:#75715e"># 检查块的hash是否正确</span>
+            <span style="color:#66d9ef">if</span> block[<span style="color:#e6db74">&#39;previous_hash&#39;</span>] <span style="color:#f92672">!=</span> self<span style="color:#f92672">.</span>hash(last_block):
+                <span style="color:#66d9ef">return</span> False
+
+            <span style="color:#75715e"># 检查proof是否正确</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>valid_proof(last_block[<span style="color:#e6db74">&#39;proof&#39;</span>], block[<span style="color:#e6db74">&#39;proof&#39;</span>]):
+                <span style="color:#66d9ef">return</span> False
+
+            last_block <span style="color:#f92672">=</span> block
+            current_index <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+
+        <span style="color:#66d9ef">return</span> True
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">resolve_conflicts</span>(self):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        这里是我们的共识算法，它把网络里最长的一条链来替换我们的以解决冲突
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        :return: &lt;bool&gt; True if our chain was replaced, False if not
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+
+        neighbours <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>nodes
+        new_chain <span style="color:#f92672">=</span> None
+
+        <span style="color:#75715e"># 只找比我们的链条长的</span>
+        max_length <span style="color:#f92672">=</span> len(self<span style="color:#f92672">.</span>chain)
+
+        <span style="color:#75715e"># 从网络里取所有节点的链条来验证</span>
+        <span style="color:#66d9ef">for</span> node <span style="color:#f92672">in</span> neighbours:
+            response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(f<span style="color:#e6db74">&#39;http://{node}/chain&#39;</span>)
+
+            <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>:
+                length <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;length&#39;</span>]
+                chain <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;chain&#39;</span>]
+
+                <span style="color:#75715e"># 检查长度是否更长，且是否合法</span>
+                <span style="color:#66d9ef">if</span> length <span style="color:#f92672">&gt;</span> max_length <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>valid_chain(chain):
+                    max_length <span style="color:#f92672">=</span> length
+                    new_chain <span style="color:#f92672">=</span> chain
+
+        <span style="color:#75715e"># 如果发了一条比我们长的合法链，进行替换</span>
+        <span style="color:#66d9ef">if</span> new_chain:
+            self<span style="color:#f92672">.</span>chain <span style="color:#f92672">=</span> new_chain
+            <span style="color:#66d9ef">return</span> True
+
+        <span style="color:#66d9ef">return</span> False
+</code></pre></div><p>来看第一个方法valid_chain，它负责检查一条链是否合法，办法是循环遍历每一块，检查他们的hash和proof值是否正确。</p>
+<p>resolve_conflicts方法循环遍历所有的相邻节点，下载他们的链条来验证。<em><strong>如果一个合法的链条被发现，并且比我们自己的好，就替换掉我们的。</strong></em></p>
+<p>让我们注册两个节点到API上，一个是添加相邻节点，另一个是处理冲突：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/nodes/register&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register_nodes</span>():
+    values <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>get_json()
+
+    nodes <span style="color:#f92672">=</span> values<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;nodes&#39;</span>)
+    <span style="color:#66d9ef">if</span> nodes <span style="color:#f92672">is</span> None:
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Error: Please supply a valid list of nodes&#34;</span>, <span style="color:#ae81ff">400</span>
+
+    <span style="color:#66d9ef">for</span> node <span style="color:#f92672">in</span> nodes:
+        blockchain<span style="color:#f92672">.</span>register_node(node)
+
+    response <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#39;message&#39;</span>: <span style="color:#e6db74">&#39;New nodes have been added&#39;</span>,
+        <span style="color:#e6db74">&#39;total_nodes&#39;</span>: list(blockchain<span style="color:#f92672">.</span>nodes),
+    }
+    <span style="color:#66d9ef">return</span> jsonify(response), <span style="color:#ae81ff">201</span>
+
+
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/nodes/resolve&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">consensus</span>():
+    replaced <span style="color:#f92672">=</span> blockchain<span style="color:#f92672">.</span>resolve_conflicts()
+
+    <span style="color:#66d9ef">if</span> replaced:
+        response <span style="color:#f92672">=</span> {
+            <span style="color:#e6db74">&#39;message&#39;</span>: <span style="color:#e6db74">&#39;Our chain was replaced&#39;</span>,
+            <span style="color:#e6db74">&#39;new_chain&#39;</span>: blockchain<span style="color:#f92672">.</span>chain
+        }
+    <span style="color:#66d9ef">else</span>:
+        response <span style="color:#f92672">=</span> {
+            <span style="color:#e6db74">&#39;message&#39;</span>: <span style="color:#e6db74">&#39;Our chain is authoritative&#39;</span>,
+            <span style="color:#e6db74">&#39;chain&#39;</span>: blockchain<span style="color:#f92672">.</span>chain
+        }
+
+    <span style="color:#66d9ef">return</span> jsonify(response), <span style="color:#ae81ff">200</span>
+</code></pre></div><p>这里你可以在不同的机器上去启动网络里的新节点。也可以在相同的机器上用不同的端口来启动。我采取了后面的办法，注册到了当前的节点。现在，我有了两个节点：http://localhost:5000 和 http://localhost:5001 。</p>
+<!-- raw HTML omitted -->
+<p>然后我在节点2上挖一个新块，让他的链条更长。搞完后，我请求节点1上的/nodes/resolve，节点1里的共识算法就会替换到新的链条：</p>
+<!-- raw HTML omitted -->
+<p>搞定收工。。。去拉些小伙伴来帮你测试你的区块链吧。</p>
+<hr>
+<p>希望本文可以激发你去创造一些新东西。我对加密货币感到欣喜，是因为我相邻区块链将会迅速改变我们对经济、政府和记录保存的看法。</p>
+<p>***Update:***我正在准备写第二部分，计划扩展我们的区块链能力，包括交易验证机制，以及讨论一些产品化区块链的方法。</p>
+<!-- raw HTML omitted -->
+<p>Translate from <a href="https://hackernoon.com/learn-blockchains-by-building-one-117428612f46">https://hackernoon.com/learn-blockchains-by-building-one-117428612f46</a></p>
+<hr>
+<p>54chen点评：</p>
+<p>当前区块链大热，但做了十年的分布式存储，一眼看这里最大的问题是取链条进行对比的过程，如果这个库的读写qps很高，这TM就是个灾难。欢迎更明白的同学到微博（54chen）来探讨。</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://blog.54chen.com/tags/blockchain"><span class="tag">Blockchain</span></a></li>
+        
+          <li><a href="http://blog.54chen.com/tags/python"><span class="tag">Python</span></a></li>
+        
+      </ul>
+      
+      <div class="next-post">
+	
+	<a class="link-reverse" href="http://blog.54chen.com/post/arch/?ref=footer">« 小米架构技术峰会在北京成功举办 | 5月14日</a>
+	
+</div>
+
+<div class="previous-post">
+	
+	<a class="link-reverse" href="http://blog.54chen.com/post/piano/?ref=footer">程序员钢琴入门教程 »</a>
+	
+</div>
+      <p class="post-copyright">
+      © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.This post was published <strong>1298</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2021 五四陈科学院</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://blog.54chen.com/js/bundle.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-6341757-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>

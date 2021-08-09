@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>在家办公神器推荐:番茄钟工作法工具 &amp; vps省钱利器</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="54chen" />
+  <meta name="description" content="至此全球疫情之际，不具备在家高效办公能力的同学，可能会被时代淘汰 :)
+54chen最近半年在家办公的经验，最重要的就是效率，利益于科学的方法，效率不低。
+平时没事就积累了一些shell脚本在macOS上跑，运行良好，不过如果你不是mac用户可能没有卵用。
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@54chen" />
+    <meta name="twitter:title" content="在家办公神器推荐:番茄钟工作法工具 &amp; vps省钱利器" />
+    <meta name="twitter:description" content="至此全球疫情之际，不具备在家高效办公能力的同学，可能会被时代淘汰 :)
+54chen最近半年在家办公的经验，最重要的就是效率，利益于科学的方法，效率不低。
+平时没事就积累了一些shell脚本在macOS上跑，运行良好，不过如果你不是mac用户可能没有卵用。
+" />
+    <meta name="twitter:image" content="http://blog.54chen.com/img/post/pomodoro.jpeg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="在家办公神器推荐:番茄钟工作法工具 &amp; vps省钱利器" />
+  <meta property="og:description" content="至此全球疫情之际，不具备在家高效办公能力的同学，可能会被时代淘汰 :)
+54chen最近半年在家办公的经验，最重要的就是效率，利益于科学的方法，效率不低。
+平时没事就积累了一些shell脚本在macOS上跑，运行良好，不过如果你不是mac用户可能没有卵用。
+" />
+  <meta property="og:url" content="http://blog.54chen.com/post/pomodoro-technique-tool/" />
+  <meta property="og:image" content="http://blog.54chen.com/img/post/pomodoro.jpeg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+
+<link rel="canonical" href="http://blog.54chen.com/post/pomodoro-technique-tool/" />
+<link rel="alternative" href="http://blog.54chen.com/index.xml" title="五四陈科学院" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<link href="http://blog.54chen.com/img/favicon-16x16.png" rel="icon">
+<link rel="apple-touch-icon" href="http://blog.54chen.com/img/favicon-32x32.png" />
+<link rel="shortcut icon" href="http://blog.54chen.com/img/favicon.ico" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://blog.54chen.com/css/bundle.css?1" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://blog.54chen.com/img/logo.jpg" alt="Avatar">
+  
+  <h2 class="title">五四陈科学院</h2>
+  
+  <p class="subtitle">相信科学，分享技术</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://blog.54chen.com/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://2014.54chen.com">Before 2018</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/tags/">Tags</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/about/">About</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+	  <img src="http://blog.54chen.com/img/post/mp.png" width="288px">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:czhttp@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/54chen" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/54chen" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/54chen" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/czhttp" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">在家办公神器推荐:番茄钟工作法工具 &amp; vps省钱利器</h1>
+      <p class="post-meta">@54chen · Jun 24, 2021 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>至此全球疫情之际，不具备在家高效办公能力的同学，可能会被时代淘汰 :)</p>
+<p>54chen最近半年在家办公的经验，最重要的就是效率，利益于科学的方法，效率不低。</p>
+<p>平时没事就积累了一些shell脚本在macOS上跑，运行良好，不过如果你不是mac用户可能没有卵用。</p>
+<p>特此推出两个神器（其实是基于macOS的脚本啦）。</p>
+<h1 id="神器1--番茄钟工作法工具">神器1  番茄钟工作法工具</h1>
+<p><a href="https://github.com/54chen/pomodorify">https://github.com/54chen/pomodorify</a></p>
+<p>项目源于一国外小哥，做了一点微小的工作，以方便在墙内使用。</p>
+<p>用法也很简单，只要去github自己fork出来项目，git clone回来就行了。</p>
+<p>里面有个脚本叫 pomodify.sh，再传个参数是最近要做啥。运行就开始25分钟的计时，到点了还有声音和弹窗提示，十分友好：）</p>
+<p>要回看一下找找成就感，也很简单，只需要 git log一下就行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+chenzhen@C-MacBook-Pro pomodorify % git log
+commit ef9651818d9ec32e50eb07b09c7338cc893435a5 <span style="color:#f92672">(</span>HEAD -&gt; master, origin/master, origin/HEAD<span style="color:#f92672">)</span>
+Author: 54chen &lt;czhttp@gmail.com&gt;
+Date:   Thu Jun <span style="color:#ae81ff">24</span> 22:23:42 <span style="color:#ae81ff">2021</span> +0800
+
+    Congrats! 21:58 - 22:23 Done! okr in japan
+
+commit 07c7ef1a096fb09a285e4d5ac4f0784abf5a60f2
+Author: 54chen &lt;czhttp@gmail.com&gt;
+Date:   Thu Jun <span style="color:#ae81ff">24</span> 21:53:28 <span style="color:#ae81ff">2021</span> +0800
+
+    Congrats! 21:28 - 21:53 Done! okr in japan
+
+commit 12af6868cba20873a7f3ee8e996bf1326476a2d6
+Author: 54chen &lt;czhttp@gmail.com&gt;
+Date:   Thu Jun <span style="color:#ae81ff">24</span> 21:23:15 <span style="color:#ae81ff">2021</span> +0800
+
+    Congrats! 20:58 - 21:23 Done! okr in japan
+
+commit 5a05a6b972b7373f714b8f66dba7574fc99b9e45
+Author: 54chen &lt;czhttp@gmail.com&gt;
+Date:   Thu Jun <span style="color:#ae81ff">24</span> 18:58:24 <span style="color:#ae81ff">2021</span> +0800
+
+    Congrats! 18:33 - 18:58 Done! global okr system
+
+commit ef0cdff415de77ebdb8a041ee87139281cc8e1fb
+Author: 54chen &lt;czhttp@gmail.com&gt;
+Date:   Thu Jun <span style="color:#ae81ff">24</span> 14:53:56 <span style="color:#ae81ff">2021</span> +0800
+
+    Congrats! 14:28 - 14:53 Done! OKRs overseas
+
+</code></pre></div><h1 id="神器2-vultr省钱利器实测至少省一半">神器2 vultr省钱利器（实测至少省一半）</h1>
+<p><a href="https://github.com/54chen/vultr-saver">https://github.com/54chen/vultr-saver</a></p>
+<p>因为这家的云主机提供了api，这脚本用他们家的api来进行destory和create，这使得当你在睡觉的时候，destory掉你的vps，要上网的时候再打开(都是自动的啦，手动也行，老是忘记)。一天24小时，基本上连在一起有8小时在线不错了。立马3折了！</p>
+<p>以前一个月6美金，这个月应该3美金以内了。。。</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://blog.54chen.com/tags/%E7%95%AA%E8%8C%84%E9%92%9F%E5%B7%A5%E4%BD%9C%E6%B3%95"><span class="tag">番茄钟工作法</span></a></li>
+        
+          <li><a href="http://blog.54chen.com/tags/vps"><span class="tag">Vps</span></a></li>
+        
+      </ul>
+      
+      <div class="next-post">
+	
+</div>
+
+<div class="previous-post">
+	
+	<a class="link-reverse" href="http://blog.54chen.com/post/overview-of-hamilton-primary-schools/?ref=footer">Overview of Hamilton Primary Schools »</a>
+	
+</div>
+      <p class="post-copyright">
+      © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2021 五四陈科学院</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://blog.54chen.com/js/bundle.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-6341757-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>

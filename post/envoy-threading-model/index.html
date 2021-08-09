@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Envoy线程模型</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="54chen" />
+  <meta name="description" content="最近在花时间看istio的架构情况，2017年5月，Google、IBM和Lyft发布了开源服务网格框架Istio，提供微服务的连接、管理、监控和安全保护。Istio提供了一个服务间通信的基础设施层，解耦了应用逻辑和服务访问中版本管理、安全防护、故障转移、监控遥测等切面的问题。其中最关键的网络组件envoy，有着举足轻重的作用，是一个高性能的开源L7代理和通信总线。
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Envoy线程模型" />
+    <meta name="twitter:description" content="最近在花时间看istio的架构情况，2017年5月，Google、IBM和Lyft发布了开源服务网格框架Istio，提供微服务的连接、管理、监控和安全保护。Istio提供了一个服务间通信的基础设施层，解耦了应用逻辑和服务访问中版本管理、安全防护、故障转移、监控遥测等切面的问题。其中最关键的网络组件envoy，有着举足轻重的作用，是一个高性能的开源L7代理和通信总线。
+" />
+    <meta name="twitter:image" content="http://blog.54chen.com/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Envoy线程模型" />
+  <meta property="og:description" content="最近在花时间看istio的架构情况，2017年5月，Google、IBM和Lyft发布了开源服务网格框架Istio，提供微服务的连接、管理、监控和安全保护。Istio提供了一个服务间通信的基础设施层，解耦了应用逻辑和服务访问中版本管理、安全防护、故障转移、监控遥测等切面的问题。其中最关键的网络组件envoy，有着举足轻重的作用，是一个高性能的开源L7代理和通信总线。
+" />
+  <meta property="og:url" content="http://blog.54chen.com/post/envoy-threading-model/" />
+  <meta property="og:image" content="http://blog.54chen.com/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+
+<link rel="canonical" href="http://blog.54chen.com/post/envoy-threading-model/" />
+<link rel="alternative" href="http://blog.54chen.com/index.xml" title="五四陈科学院" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<link href="http://blog.54chen.com/img/favicon-16x16.png" rel="icon">
+<link rel="apple-touch-icon" href="http://blog.54chen.com/img/favicon-32x32.png" />
+<link rel="shortcut icon" href="http://blog.54chen.com/img/favicon.ico" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://blog.54chen.com/css/bundle.css?1" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://blog.54chen.com/img/logo.jpg" alt="Avatar">
+  
+  <h2 class="title">五四陈科学院</h2>
+  
+  <p class="subtitle">相信科学，分享技术</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://blog.54chen.com/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://2014.54chen.com">Before 2018</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/tags/">Tags</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/about/">About</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+	  <img src="http://blog.54chen.com/img/post/mp.png" width="288px">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:cc0cc@126.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/54chen" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/img/post/mp.png" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Envoy线程模型</h1>
+      <p class="post-meta">@54chen · May 22, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>最近在花时间看istio的架构情况，2017年5月，Google、IBM和Lyft发布了开源服务网格框架Istio，提供微服务的连接、管理、监控和安全保护。Istio提供了一个服务间通信的基础设施层，解耦了应用逻辑和服务访问中版本管理、安全防护、故障转移、监控遥测等切面的问题。其中最关键的网络组件envoy，有着举足轻重的作用，是一个高性能的开源L7代理和通信总线。</p>
+<p>translated from <a href="https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310">https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310</a></p>
+<p>在envoy代码库上底层的技术文档还很稀少。为了改变这个情况，我计划写一系列的关于各个子系统的文章。因为这是第一篇，请告诉我你想了解的和你希望看到的其他主题。</p>
+<p>我遇到的最常见的envoy技术问题之一是询问其使用的low level的线程模型。本文将会讲到envoy如何map连接到线程上，也会描述TLS系统，TLS是内部用于使代码高性能和高并发的作用。</p>
+<h2 id="线程预览">线程预览</h2>
+<!-- raw HTML omitted -->
+<p>如图1所示，Envoy使用了三种类型的线程。</p>
+<ul>
+<li>
+<p>主线程：这个线程控制了启动和关闭，所有的xDS API的处理（包括DNS、健康检测、集群管理），运行时，统计刷回，管理员，以及普通线程管理（信号、热重启等）。在这个线程里发生的所有事情都是异步非阻塞的。通常主线程协调了所有关键的线程功能，而且不需要大量的cpu来达成。这就允许大多数管理代码都以好像是单线程的方式来写。</p>
+</li>
+<li>
+<p>工作线程：默认情况下，envoy给系统的每个硬件进程产生一个工作线程。（可以通过&ndash;concurrency来控制）。每个工作线程运行了一个非阻塞的事件驱动器，负责在每个监听器上监听（目前监听器还不能分片），接收新的连接，给每条连接初始化一个过滤栈，处理连接生命周期里的所有IO。</p>
+</li>
+<li>
+<p>文件刷新器：envoy所写的每个文件（主要是access日志）当前有一个独立的阻塞的刷新线程。这是因为将缓存文件写到文件系统即使使用了O_NONBLOCK，有时一样会block。当工作线程需要写文件的时候，数据实际上是移动到了一块内存的缓冲区，最后通过文件刷新线程刷到磁盘里。代码里所有的工作线程可以技术上阻塞在同一个锁上尝试填充内存缓冲区。还有一些内容下面进行讨论。</p>
+</li>
+</ul>
+<h2 id="连接处理">连接处理</h2>
+<p>如上面简短的讨论，所有的工作线程在没有分片的监听器进行监听。内核聪明地分发接收到的连接给工作线程。现代内核一般非常擅长干这事，他们并不使用单个自旋锁来处理每个连接，而是使用类似IO优先级提升的策略，策略能尝试在开始使用监听在相同socket上的其他线程前填满一个线程的工作。</p>
+<p>一旦一个连接被一个工作线程所接受，它将永不离开worker。所有未来处理这个连接的事情都将整个使用这个工作线程来处理，包括每个转发行为。这里有一些重要的意义：</p>
+<ul>
+<li>
+<p>envoy里所有的连接池都是按每个工作线程来搞的。所以，尽管http2 连接池只在每个upstream的host上每次创建一个连接，如果有4个工作线程，将会在每个upstream host上有4个稳定的http2的连接。</p>
+</li>
+<li>
+<p>envoy可以这样工作的原因，是因为靠保持所有的事情都在一个单独的线程里来解决，几乎所有的代码都是没有锁的写法，就像是单线程的。这个设计使得大多数代码更易写，并且可以扩展到几乎不限制的工作线程数量。</p>
+</li>
+<li>
+<p>不过，从内存和连接池效率出发，一个主要的观点是，调试&ndash;concurrency参数非常的重要。设置过多的工作线程会浪费内存，创建更多的闲置连接，导致更低的连接池命中率。在Lyft我们的边车Envoy在很低的并发上运行，所以性能在服务边上可以大致匹配。我们只在边缘的envoy上跑了大的concurrency值。</p>
+</li>
+</ul>
+<h2 id="什么是非阻塞">什么是非阻塞</h2>
+<p>目前为止，当讨论主线程和工作线程操作时，非阻塞被提到很多次。编写所有的代码都假设了没有阻塞。尽管如此，这并不完全正确（有什么是完全正确的吗？）。envoy的确也有一些线程到处是锁：</p>
+<ul>
+<li>
+<p>已提过的，当access日志被写时，所有的worker在填满内存access日志缓冲区前取相同的锁。锁住的时间应该很短，但这锁有可能成为高并发和高吞吐的瓶颈。</p>
+</li>
+<li>
+<p>envoy使用thread local来搞了个复杂的系统处理统计。这会是一个单独的话题。尽管如此，我会简单讲一下，作为线程本地统计处理的一部分，有时需要取一个锁去做中央的统计存储。这个锁不应该是很高的争抢的。</p>
+</li>
+<li>
+<p>主线程周期性地需要同各工作线程进行协调。这靠posting来完成从主线程到工作线程的过程（有时是从工作线程回到主线程）。posting需要拿一个锁，然后被发的消息可以放进队列以供发送。这些锁不会被高度争抢，但仍然在技术上实现了锁。</p>
+</li>
+<li>
+<p>当envoy记录自身状态到标准错误输出时，它取一个线程级的锁。大家都认为envoy本地日志都认为在性能上是最差的，所以也不太考虑要去改进这一点。</p>
+</li>
+<li>
+<p>还有一些其他的随机锁，但没有性能上的严重影响，也不会被争抢。</p>
+</li>
+</ul>
+<h2 id="线程本地存储">线程本地存储</h2>
+<p>因为envoy分了主线程和工作线程职责，所以就要求可以在主线程上复杂处理，同时要为每个工作线程搞一个高并发的可用方式。本节站在high level描述envoy的TLS系统。下节描述如何用于处理集群管理。</p>
+<!-- raw HTML omitted -->
+<p>如之前所述，主线程处理了envoy线程中几乎所有的管理和控制平面功能。（控制平面有一点超载，不过考虑到在envoy线程自身和对比工作线程转发情况，似乎也是合适的。）这是一种常见的模式，主线程处理一些事情，然后用结果更新每个工作线程，并且没有工作线程在过程中需要取锁。</p>
+<p>envoy的TLS系统按下面所述运行：</p>
+<ul>
+<li>
+<p>代码在主线程上开辟一个线程级的TLS插槽。尽管被抽出来了，实践中这是一个放到vector中可以以O(1)访问的索引。</p>
+</li>
+<li>
+<p>主线程上可以设置任意数据到他的插槽中。放入后数据可以像一下正常的事件驱动的事件发给每个worker。</p>
+</li>
+<li>
+<p>工作线程可以在TLS插槽上读任何可读的数据。</p>
+</li>
+</ul>
+<p>尽管非常简单，这是一个难以置信的强大范式，和RCU锁原则非常相似。（本质上来讲，工作线程在干活时没有见到任何在TLS插槽上的数据修改。修改只发生在工作事件间的静止期里）。envoy在两个不同的方式上使用这一点：</p>
+<ul>
+<li>
+<p>用来存储在每个worker上不同的数据，并且没有任何锁。</p>
+</li>
+<li>
+<p>用来存储在每个worker上只读的全局数据共享指针。所以，每个worker都有一个在干活时不能减少的引用计数。只有当worker静默时，加载新的共享数据，老数据将会销毁。这与RCU完全一样。</p>
+</li>
+</ul>
+<h2 id="集群更新线程">集群更新线程</h2>
+<p>本节会介绍TLS如何做到集群管理。集群管理包括了xDS api处理和/或DNS以及健康检测。</p>
+<!-- raw HTML omitted -->
+<p>图3显示了整个流程，包括以下组件和步骤：</p>
+<p>1.集群管理是envoy的内部组件，管理了所有已知upstream的集群，CDS API，SDS EDS API，DNS，活跃健康检测。它负责给每个upstream集群创建一个最终一致的视图，包括已发现的主机以及他们的健康状况。</p>
+<p>2.健康检测器执行活跃健康检测，上报健康状况给集群管理器。</p>
+<p>3.CDS SDS EDS DNS 被执行来决定集群里的成员关系。状态变化也被回报给集群管理器。</p>
+<p>4.每个工作线程都在持续地跑事件驱动。</p>
+<p>5.当集群管理器决定一个群集的状态要改变时，它会创建一个新的只读的群集状态快照，并推给每个工作线程。</p>
+<p>6.在下一个静默期，工作线程会更新快照到已经开辟的TLS插槽。</p>
+<p>7.IO事件需要靠负载均衡决定一个主机，在此时，负载均衡器会查询TLS插槽找主机信息。这过程无需锁。（注意TLS也可以触发更新事件，这样负载均衡器和其他组件可以验算缓存、数据结构等。这超出了本文的范围，但在代码中多处被用）</p>
+<p>靠前面的过程描述，envoy能够无锁地处理每个请求（或者不靠前面的内容）。除了TLS代码本身的复杂度，大多数代码并不需要理解线程是如何工作的，写的时候就像单线程一样。这使得大多数代码写起来更简单，另外还产生了卓越的性能好处。</p>
+<h2 id="其他使用了tls的子系统">其他使用了TLS的子系统</h2>
+<p>TLS和RCU被广泛在envoy里使用。其他一些例子包括：</p>
+<ul>
+<li>
+<p>lookup重载运行时（功能标志）：当前的重载地图功能标志是在主线程上计算的。一个只读的快照被按RCU语义提供给每个worker。</p>
+</li>
+<li>
+<p>路由表交换：RDS提供的路由表，在主线程上初始化。一个只读的快照被按RCU语义提供给每个worker。这样使路由表交换能有效地原子化。</p>
+</li>
+<li>
+<p>http数据头缓存：事实证明，计算每个请求的http date头（当每个core有25k＋的rps时）是相当的昂贵的。envoy集中每半秒计算一次date头，并通过TLS和RCU提供给每个worker。</p>
+</li>
+</ul>
+<p>还有很多其他的例子，但前面的例子已经可以提供不少关于TLS能干啥的好结论了。</p>
+<h2 id="已知的性能陷阱">已知的性能陷阱</h2>
+<p>尽管整体的envoy性能非常好，但在高并发和高吞吐情况下，有一些已知的情况仍然需要注意：</p>
+<ul>
+<li>
+<p>如前所述，当前所有的工作线程在写一个访问日志的内存缓冲区时是抢同一个锁。在高并发高吞吐量下，在写最终文件时，在投递成本上，一定要每个线程都做批量的访问日志。作为替代方案，访问日志可以变成每个工作线程为单位的。</p>
+</li>
+<li>
+<p>尽管stats已经非常非常优化了，但在极端高并发和高吞吐的情况下，仍然会在个别stat上有原子性的争抢。解决的办法是为每个工作线程计数器进行定期的刷到集中的计数器上去。这会在以后的文章里讨论。</p>
+</li>
+<li>
+<p>如果envoy被部署在很少连接且每连接需要大量资源来处理的的场景中，现存的架构工作得不会太好。这是因为没有办法保证连接能在工作线程间均匀分布。这可以靠实现工作线程里的连接均衡来解决，连接均衡靠工作线程可以转发连接给别的工作线程处理来达到。</p>
+</li>
+</ul>
+<h2 id="结论">结论</h2>
+<p>Envoy的线程模型旨在支持简单编程，以及大规模的并行性，主要的代价为，如果没有正确的调试，可能会浪费内存和连接。这个模型允许它在非常高的工作线程数和吞吐量下有着良好的性能。</p>
+<p>如我在twitter上简要提及，此设计也适合运行在像DPDK这样的完整用户模式网络之上，这可导致商品server在7层上能处理每秒百万的请求。在未来的几年里这些实现将会喜闻乐见。</p>
+<p>最后一个问题：我被问了许多次为什么选c++来搞envoy。原因是它仍是唯一被广泛部署于的生产级语言，其最可能达成前文所述的架构。c++肯定不是适合所有人，甚至不是大数多人，大数多项目，但在特定场景下仍是完成工作的唯一可选工具。</p>
+<h2 id="相关代码">相关代码</h2>
+<p>本文所讨论到的一个接口或实现的头文件：</p>
+<ul>
+<li>
+<p><a href="https://github.com/lyft/envoy/blob/master/include/envoy/thread_local/thread_local.h">https://github.com/lyft/envoy/blob/master/include/envoy/thread_local/thread_local.h</a></p>
+</li>
+<li>
+<p><a href="https://github.com/lyft/envoy/blob/master/source/common/thread_local/thread_local_impl.h">https://github.com/lyft/envoy/blob/master/source/common/thread_local/thread_local_impl.h</a></p>
+</li>
+<li>
+<p><a href="https://github.com/lyft/envoy/blob/master/include/envoy/upstream/cluster_manager.h">https://github.com/lyft/envoy/blob/master/include/envoy/upstream/cluster_manager.h</a></p>
+</li>
+<li>
+<p><a href="https://github.com/lyft/envoy/blob/master/source/common/upstream/cluster_manager_impl.h">https://github.com/lyft/envoy/blob/master/source/common/upstream/cluster_manager_impl.h</a></p>
+</li>
+</ul></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://blog.54chen.com/tags/envoy"><span class="tag">Envoy</span></a></li>
+        
+          <li><a href="http://blog.54chen.com/tags/istio"><span class="tag">Istio</span></a></li>
+        
+      </ul>
+      
+      <div class="next-post">
+	
+	<a class="link-reverse" href="http://blog.54chen.com/post/load-balance/?ref=footer">« 关于现代网络负载均衡和代理</a>
+	
+</div>
+
+<div class="previous-post">
+	
+	<a class="link-reverse" href="http://blog.54chen.com/post/arch/?ref=footer">小米架构技术峰会在北京成功举办 | 5月14日 »</a>
+	
+</div>
+      <p class="post-copyright">
+      © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.This post was published <strong>1175</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2021 五四陈科学院</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://blog.54chen.com/js/bundle.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-6341757-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>

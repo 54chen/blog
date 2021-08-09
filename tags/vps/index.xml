@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vps on 五四陈科学院</title>
+    <link>http://blog.54chen.com/tags/vps/</link>
+    <description>Recent content in vps on 五四陈科学院</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Thu, 24 Jun 2021 22:31:20 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/tags/vps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在家办公神器推荐:番茄钟工作法工具 &amp; vps省钱利器</title>
+      <link>http://blog.54chen.com/post/pomodoro-technique-tool/</link>
+      <pubDate>Thu, 24 Jun 2021 22:31:20 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/pomodoro-technique-tool/</guid>
+      <description>&lt;p&gt;至此全球疫情之际，不具备在家高效办公能力的同学，可能会被时代淘汰 :)&lt;/p&gt;
+&lt;p&gt;54chen最近半年在家办公的经验，最重要的就是效率，利益于科学的方法，效率不低。&lt;/p&gt;
+&lt;p&gt;平时没事就积累了一些shell脚本在macOS上跑，运行良好，不过如果你不是mac用户可能没有卵用。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>istio on 五四陈科学院</title>
+    <link>http://blog.54chen.com/tags/istio/</link>
+    <description>Recent content in istio on 五四陈科学院</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Wed, 23 May 2018 14:21:52 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于现代网络负载均衡和代理</title>
+      <link>http://blog.54chen.com/post/load-balance/</link>
+      <pubDate>Wed, 23 May 2018 14:21:52 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/load-balance/</guid>
+      <description>&lt;p&gt;最近我注意到，对现在网络均衡和代理的解释性材料非常缺乏。我心想：怎么会这样子？负载均衡是构建可靠的分布式系统的核心概念之一。这里肯定有一些有质量的可用信息了吗？我尝试去搜，发现的确十分少。维基百科上关于负载均衡和代理服务包括了一些观点的概述，但不是这个主题的一系列更新的内容，特别地当在现代微服务架构下时。Google搜到的负载均衡的结果吧，主要跳转去一些充满流行词却没有细节的供应商页面。&lt;/p&gt;
+&lt;p&gt;本文试图通过仔细介绍现代网络均衡和代理，以减少相关信息的缺乏。坦率讲这是一个巨大的话题，甚至可以是一本书来讲。为了让此文保持博客长短，我试着将一组复杂主题提炼成一个简单的概述。根据兴趣和反馈，我会考虑在晚些时候以单独的文章来表达更多的细节。&lt;/p&gt;
+&lt;p&gt;带着这些个为啥写这个的原因，我们开始吧。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Envoy线程模型</title>
+      <link>http://blog.54chen.com/post/envoy-threading-model/</link>
+      <pubDate>Tue, 22 May 2018 10:48:51 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/envoy-threading-model/</guid>
+      <description>&lt;p&gt;最近在花时间看istio的架构情况，2017年5月，Google、IBM和Lyft发布了开源服务网格框架Istio，提供微服务的连接、管理、监控和安全保护。Istio提供了一个服务间通信的基础设施层，解耦了应用逻辑和服务访问中版本管理、安全防护、故障转移、监控遥测等切面的问题。其中最关键的网络组件envoy，有着举足轻重的作用，是一个高性能的开源L7代理和通信总线。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

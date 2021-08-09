@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blockchain on 五四陈科学院</title>
+    <link>http://blog.54chen.com/tags/blockchain/</link>
+    <description>Recent content in blockchain on 五四陈科学院</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Thu, 18 Jan 2018 16:20:57 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>靠写代码学习什么是区块链</title>
+      <link>http://blog.54chen.com/post/blockchain/</link>
+      <pubDate>Thu, 18 Jan 2018 16:20:57 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/blockchain/</guid>
+      <description>&lt;p&gt;最快学会区块链是如何工作的办法是写代码构建一个。&lt;/p&gt;
+&lt;p&gt;Translate from &lt;a href=&#34;https://hackernoon.com/learn-blockchains-by-building-one-117428612f46&#34;&gt;https://hackernoon.com/learn-blockchains-by-building-one-117428612f46&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;你在这里是因为和我一样对加密货币的兴起感到激动。而且你想知道区块链是如何工作的－－也就是区块链背后的基础技术。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
