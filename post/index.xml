@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
-    <lastBuildDate>Tue, 15 Jun 2021 22:49:15 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Jun 2021 22:31:20 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在家办公神器推荐:番茄钟工作法工具</title>
+      <link>http://blog.54chen.com/post/pomodoro-technique-tool/</link>
+      <pubDate>Thu, 24 Jun 2021 22:31:20 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/pomodoro-technique-tool/</guid>
+      <description>&lt;p&gt;至此全球疫情之际，不具备在家高效办公能力的同学，可能会被时代淘汰 :)&lt;/p&gt;
+&lt;p&gt;54chen最近半年在家办公的经验，最重要的就是效率，利益于科学的方法，效率不低。&lt;/p&gt;
+&lt;p&gt;平时没事就积累了一些shell脚本在macOS上跑，运行良好，不过如果你不是mac用户可能没有卵用。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Overview of Hamilton Primary Schools</title>
       <link>http://blog.54chen.com/post/overview-of-hamilton-primary-schools/</link>
@@ -15,6 +26,16 @@
       
       <guid>http://blog.54chen.com/post/overview-of-hamilton-primary-schools/</guid>
       <description>&lt;p&gt;I have spent a lot of time on the primary schools choosing for my child. It is really a good result that I have generated a viz to show the details about all the information I found. Thanks for all the suggestions during the production process.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ZTEZXV10B860AV1.1机顶盒刷机手记</title>
+      <link>http://blog.54chen.com/post/zteb860av1.1-to-router/</link>
+      <pubDate>Sun, 13 Jun 2021 21:10:10 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/zteb860av1.1-to-router/</guid>
+      <description>&lt;p&gt;每次换宽带，都会遗留下来各种奇形怪状的盒子，ZTEB86AV1.1是几年前的北京电信天翼宽带留下的产物，后来北京移动来抢生意，价格只有四分之一，网速还更快，所以就换了。这些盒子都是标准的技术架构，OS Kernel依靠ARM的一整套方案，有些包着海思的皮，所有的driver+kernel烧到芯片里，上面加上android framework, 所以在网上实际上都可以找到对应的固件来直接刷写到ROM中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.54chen.com/img/post/zte-2.jpg&#34; alt=&#34;zte&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

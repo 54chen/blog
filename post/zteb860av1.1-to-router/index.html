@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
 
   
-  <title>ZTEZXV10B860AV1.1机顶盒刷机转旁路由手记</title>
+  <title>ZTEZXV10B860AV1.1机顶盒刷机手记</title>
 
   
   
@@ -22,8 +22,8 @@
   
   
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@54chen" />
-    <meta name="twitter:title" content="ZTEZXV10B860AV1.1机顶盒刷机转旁路由手记" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="ZTEZXV10B860AV1.1机顶盒刷机手记" />
     <meta name="twitter:description" content="每次换宽带，都会遗留下来各种奇形怪状的盒子，ZTEB86AV1.1是几年前的北京电信天翼宽带留下的产物，后来北京移动来抢生意，价格只有四分之一，网速还更快，所以就换了。这些盒子都是标准的技术架构，OS Kernel依靠ARM的一整套方案，有些包着海思的皮，所有的driver&#43;kernel烧到芯片里，上面加上android framework, 所以在网上实际上都可以找到对应的固件来直接刷写到ROM中。
 " />
     <meta name="twitter:image" content="http://blog.54chen.com/img/post/zte-1.jpg" />
@@ -31,7 +31,7 @@
 
   
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="ZTEZXV10B860AV1.1机顶盒刷机转旁路由手记" />
+  <meta property="og:title" content="ZTEZXV10B860AV1.1机顶盒刷机手记" />
   <meta property="og:description" content="每次换宽带，都会遗留下来各种奇形怪状的盒子，ZTEB86AV1.1是几年前的北京电信天翼宽带留下的产物，后来北京移动来抢生意，价格只有四分之一，网速还更快，所以就换了。这些盒子都是标准的技术架构，OS Kernel依靠ARM的一整套方案，有些包着海思的皮，所有的driver&#43;kernel烧到芯片里，上面加上android framework, 所以在网上实际上都可以找到对应的固件来直接刷写到ROM中。
 " />
   <meta property="og:url" content="http://blog.54chen.com/post/zteb860av1.1-to-router/" />
@@ -157,7 +157,7 @@
 
       
       <li class="social-item">
-        <a href="mailto:czhttp@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+        <a href="mailto:cc0cc@126.com" title="Email"><span class="icon icon-email"></span></a>
       </li>
 
       
@@ -165,10 +165,6 @@
         <a href="//github.com/54chen" title="GitHub"><span class="icon icon-github"></span></a>
       </li>
 
-      <li class="social-item">
-        <a href="//twitter.com/54chen" title="Twitter"><span class="icon icon-twitter"></span></a>
-      </li>
-
       
 
       
@@ -193,15 +189,15 @@
 
       
 
-      <li class="social-item">
-        <a href="//weibo.com/54chen" title="Weibo"><span class="icon icon-weibo"></span></a>
-      </li>
+      
 
       
 
       <li class="social-item">
-        <a href="//www.linkedin.com/in/czhttp" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+        <a href="http://blog.54chen.com/img/post/mp.png" title="Wechat"><span class="icon icon-wechat"></span></a>
       </li>
+
+      
 
       
 
@@ -219,15 +215,15 @@
 
   <section class="main post-detail">
     <header class="post-header">
-      <h1 class="post-title">ZTEZXV10B860AV1.1机顶盒刷机转旁路由手记</h1>
+      <h1 class="post-title">ZTEZXV10B860AV1.1机顶盒刷机手记</h1>
       <p class="post-meta">@54chen · Jun 13, 2021 · 1 min read</p>
     </header>
     <article class="post-content"><p>每次换宽带，都会遗留下来各种奇形怪状的盒子，ZTEB86AV1.1是几年前的北京电信天翼宽带留下的产物，后来北京移动来抢生意，价格只有四分之一，网速还更快，所以就换了。这些盒子都是标准的技术架构，OS Kernel依靠ARM的一整套方案，有些包着海思的皮，所有的driver+kernel烧到芯片里，上面加上android framework, 所以在网上实际上都可以找到对应的固件来直接刷写到ROM中。</p>
 <p><img src="http://blog.54chen.com/img/post/zte-2.jpg" alt="zte"></p>
 <p>为啥要刷的原因是他官方的太恶心了，不给开adbd不说，还经常自己偷偷下些东西。所以就有了xxx纯净版这种固件（像极了早期的android手机市场）。</p>
-<p>下面进入正题，如何将ZTEB860AV1.1中兴的电视盒子变废为宝，完成后，达到旁路由效果。</p>
+<p>下面进入正题，如何将ZTEB860AV1.1中兴的电视盒子变废为宝，完成后，效果不错。</p>
 <h2 id="第一步-花5-10块不等买ch340-usb转ttl连接线一根">第一步 花5-10块不等买CH340 USB转TTL连接线一根</h2>
-<p>正二八经刷机专用的，基本上这些盒子也好、路由器也好，都支持，一般TTL的接线就三条主要的：GND地线，RXD收数据，TXD发数据。很少需要给板子供电才能玩的(某些开源硬件需要)。</p>
+<p>正二八经刷机专用的，基本上这些盒子也好、R器也好，都支持，一般TTL的接线就三条主要的：GND地线，RXD收数据，TXD发数据。很少需要给板子供电才能玩的(某些开源硬件需要)。</p>
 <h2 id="第二步-拆机中兴接线">第二步 拆机中兴，接线</h2>
 <p>找个起子，找缝就撬就对了，总能弄开的，弄开后就一块板子，cpu、rom、ram、hdmi、usb、wifi、蓝牙啥的全齐活，收废品还是有芯片的，要说中国芯片不足，找收废品的试试。</p>
 <p><img src="http://blog.54chen.com/img/post/zte-3.jpg" alt="zte"></p>
@@ -257,16 +253,16 @@ iptables -t mangle -A XXX_MASK -p udp -j TPROXY --on-port <span style="color:#ae
 
 </code></pre></div><p>大概意思就是打开ip转发，所有相关的包都给转到12345端口去。</p>
 <h2 id="第六步-最终设置完成">第六步 最终设置完成</h2>
-<p>所有家里要使用的设备，只要修改原来的网关192.168.1.1为192.168.1.10即可（wifi还是连原来的）,然后就通过这个旁路由拥有了它的网络能力。</p>
-<p>到此，旁路由功能完成。</p>
-<p>以上所有用到的文件，包括名为MstarUpgrade.bin、xxx-linux-arm.tar.gz、config.json 有尝提供:) 联系邮件 <a href="mailto:czhttp@gmail.com">czhttp@gmail.com</a>。</p></article>
+<p>所有家里要使用的设备，只要修改原来的网关192.168.1.1为192.168.1.10即可（wifi还是连原来的）,然后就通过这个拥有了它的能力。</p>
+<p>到此，功能完成。</p>
+<p>以上所有用到的文件，包括名为MstarUpgrade.bin、xxx-linux-arm.tar.gz、config.json 有尝提供:) 联系邮件 <a href="mailto:cc0cc@126.com">cc0cc@126.com</a>。</p></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
         
-          <li><a href="http://blog.54chen.com/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1"><span class="tag">软路由</span></a></li>
+          <li><a href="http://blog.54chen.com/tags/%E8%BD%AFr"><span class="tag">软R</span></a></li>
         
-          <li><a href="http://blog.54chen.com/tags/%E6%97%81%E8%B7%AF%E7%94%B1"><span class="tag">旁路由</span></a></li>
+          <li><a href="http://blog.54chen.com/tags/%E6%97%81r"><span class="tag">旁R</span></a></li>
         
       </ul>
       
@@ -278,7 +274,7 @@ iptables -t mangle -A XXX_MASK -p udp -j TPROXY --on-port <span style="color:#ae
 
 <div class="previous-post">
 	
-	<a class="link-reverse" href="http://blog.54chen.com/post/history-of-israel-and-palestine/?ref=footer">History of Israel and Palestine »</a>
+	<a class="link-reverse" href="http://blog.54chen.com/post/mi-car/?ref=footer">利用手柄和安卓给娃“再造”小米赛车 »</a>
 	
 </div>
       <p class="post-copyright">
