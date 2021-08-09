@@ -19,29 +19,4 @@ Dad,Husband,Blogger,Coder,Work on the server side more than 10 years.
 
 第十三个年头，启用这个永不落后的域名 http://blog.54chen.com ，记录的东西将会有：技术经验、儿科、钢琴、等等。
 
-个人简介
----------
-
-54chen，真名：陈臻。<br />
-
-<p>关键词：<br />
-rose,riak,rabbitmq,zookeeper,thrift,nuclear,<br />
-senseidb,hadoop,hive,dynamo,<br />
-php extension,nginx module</p>
-
-<p>天下风云出我辈，一入江湖岁月催. <br />
-鸿图霸业谈笑中，不胜人生一场醉. <br />
-提剑跨骑挥鬼域，白骨如山鸟惊飞. <br />
-尘世如潮人如水，只叹江湖几人回. </p>
-
-<p>过去的经历：<br />
-小米</p>
-人人网分布式研究人员（nuclear系统开发者）<br />
-雅虎、淘宝搜索开发工程师<br />
-金山词霸开发工程师<br />
-曾用代号有：cc0cc、零蛋。</p>
-
-54chen常用的头像：<br>
-
-![年轻时的头像](http://img05.taobaocdn.com/bao/uploaded/i5/T1PrNtXjhzXXaMUcQZ_031618.jpg)
-![年纪大了头像](http://img04.taobaocdn.com/bao/uploaded/i4/T11rBtXfBEXXb3b0EZ_031717.jpg)
+20210809 pdf 下载： https://www.54chen.com/20210809-54chen.com.pdf
