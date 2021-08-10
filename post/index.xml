@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
-    <lastBuildDate>Thu, 24 Jun 2021 22:31:20 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Aug 2021 19:18:21 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>利用python,jieba,bm25,django,nginx半小时打造一个基本可用的中文全文检索的搜索引擎</title>
+      <link>http://blog.54chen.com/post/chinese-search/</link>
+      <pubDate>Tue, 10 Aug 2021 19:18:21 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/chinese-search/</guid>
+      <description>&lt;p&gt;以前做搜索的时候，大部分时间用sphinx、postgreSQL，后来用ES这类java的，但都比较重，要配置和使用需要好一段时间才能从零run起来。&lt;/p&gt;
+&lt;p&gt;最近正好有个场景，需要快速弄个搜索出来，正好python3里英雄众多，现成的东西不少，结合一下就完成了。下面是一些记录，代码整理后也会放到github中。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>在家办公神器推荐:番茄钟工作法工具</title>
       <link>http://blog.54chen.com/post/pomodoro-technique-tool/</link>

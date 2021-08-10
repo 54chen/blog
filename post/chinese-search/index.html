@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>利用python,jieba,bm25,django,nginx半小时打造一个基本可用的中文全文检索的搜索引擎</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="John" />
+  <meta name="description" content="以前做搜索的时候，大部分时间用sphinx、postgreSQL，后来用ES这类java的，但都比较重，要配置和使用需要好一段时间才能从零run起来。
+最近正好有个场景，需要快速弄个搜索出来，正好python3里英雄众多，现成的东西不少，结合一下就完成了。下面是一些记录，代码整理后也会放到github中。
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="利用python,jieba,bm25,django,nginx半小时打造一个基本可用的中文全文检索的搜索引擎" />
+    <meta name="twitter:description" content="以前做搜索的时候，大部分时间用sphinx、postgreSQL，后来用ES这类java的，但都比较重，要配置和使用需要好一段时间才能从零run起来。
+最近正好有个场景，需要快速弄个搜索出来，正好python3里英雄众多，现成的东西不少，结合一下就完成了。下面是一些记录，代码整理后也会放到github中。
+" />
+    <meta name="twitter:image" content="http://blog.54chen.com/img/cover.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="利用python,jieba,bm25,django,nginx半小时打造一个基本可用的中文全文检索的搜索引擎" />
+  <meta property="og:description" content="以前做搜索的时候，大部分时间用sphinx、postgreSQL，后来用ES这类java的，但都比较重，要配置和使用需要好一段时间才能从零run起来。
+最近正好有个场景，需要快速弄个搜索出来，正好python3里英雄众多，现成的东西不少，结合一下就完成了。下面是一些记录，代码整理后也会放到github中。
+" />
+  <meta property="og:url" content="http://blog.54chen.com/post/chinese-search/" />
+  <meta property="og:image" content="http://blog.54chen.com/img/cover.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+
+<link rel="canonical" href="http://blog.54chen.com/post/chinese-search/" />
+<link rel="alternative" href="http://blog.54chen.com/index.xml" title="五四陈科学院" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<link href="http://blog.54chen.com/img/favicon-16x16.png" rel="icon">
+<link rel="apple-touch-icon" href="http://blog.54chen.com/img/favicon-32x32.png" />
+<link rel="shortcut icon" href="http://blog.54chen.com/img/favicon.ico" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://blog.54chen.com/css/bundle.css?1" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://blog.54chen.com/img/logo.jpg" alt="Avatar">
+  
+  <h2 class="title">五四陈科学院</h2>
+  
+  <p class="subtitle">相信科学，分享技术</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://blog.54chen.com/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://2014.54chen.com">Before 2018</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/tags/">Tags</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/about/">About</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+	  <img src="http://blog.54chen.com/img/post/mp.png" width="288px">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:cc0cc@126.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/54chen" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/img/post/mp.png" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">利用python,jieba,bm25,django,nginx半小时打造一个基本可用的中文全文检索的搜索引擎</h1>
+      <p class="post-meta">@John · Aug 10, 2021 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>以前做搜索的时候，大部分时间用sphinx、postgreSQL，后来用ES这类java的，但都比较重，要配置和使用需要好一段时间才能从零run起来。</p>
+<p>最近正好有个场景，需要快速弄个搜索出来，正好python3里英雄众多，现成的东西不少，结合一下就完成了。下面是一些记录，代码整理后也会放到github中。</p>
+<h2 id="任务背景">任务背景</h2>
+<ol>
+<li>data/目录下有一堆html文件，存在子目录，都是标准的html。</li>
+<li>内容中有中英文混合。</li>
+<li>建立搜索能力，输入“上海自来水来自海上”，找出最相关的html。</li>
+</ol>
+<h2 id="基础知识">基础知识</h2>
+<p>jieba是python里的中文分词支持，通过pip3 install jieba可安装。</p>
+<p>tdidf是一种统计方法，简单讲就是越少看见的词，在一个文档里出现了说明这个文档更加是在说这个词。</p>
+<p>bm25是计算两个内容的相似度的一种办法，tdidf能出来一个词与文档的关系，bm25能出来一堆词与文档的关系。</p>
+<p>stopwords是搜索里常见的停用词，把一些常见的没有意义的词故意过滤不作索引，以免影响效果。</p>
+<p>BeautifulSoup是python里的爬虫库，可以用来去除html啥的。</p>
+<p>pickle是python的对象持久化存储的库，可以用来保存索引。</p>
+<p>django是python的web框架，uwsgi是python的web服务器，与nginx无缝连接。</p>
+<p>提前安装依赖：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+pip3 install jieba,BeautifulSoup,pickle,rank_bm25,uwsgi,django
+
+
+</code></pre></div><h2 id="代码实现">代码实现</h2>
+<p>所有的引用有：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">import</span> re
+<span style="color:#f92672">import</span> jieba
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> pickle
+<span style="color:#f92672">from</span> rank_bm25 <span style="color:#f92672">import</span> BM25Okapi
+
+</code></pre></div><p>首先要遍历文件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+list_URL_sport <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">walk_file</span>(file):
+    <span style="color:#66d9ef">for</span> root, dirs, files <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>walk(file):
+        <span style="color:#66d9ef">for</span> f <span style="color:#f92672">in</span> files:
+            f_s <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(root, f);
+            <span style="color:#66d9ef">if</span> f_s<span style="color:#f92672">.</span>endswith(<span style="color:#e6db74">&#39;html&#39;</span>):
+                list_URL_sport<span style="color:#f92672">.</span>append(f_s)
+        
+</code></pre></div><p>进行文件处理，过滤html，进行分词，建立bm25对象，保存索引。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">crawler</span>(list_URL):
+    corpus <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> i, url <span style="color:#f92672">in</span> enumerate(list_URL):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;网页爬取:&#34;</span>, url, <span style="color:#e6db74">&#34;...&#34;</span>)
+        <span style="color:#66d9ef">with</span> open(url, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+            page <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+        result_chinese <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> bs4_page_clean(page)
+        corpus<span style="color:#f92672">.</span>append(jieba_create_index(result_chinese))
+        documents<span style="color:#f92672">.</span>append(url)
+    index_obj[<span style="color:#e6db74">&#39;d&#39;</span>] <span style="color:#f92672">=</span> documents
+    bm25 <span style="color:#f92672">=</span> BM25Okapi(corpus)
+    index_obj[<span style="color:#e6db74">&#39;b&#39;</span>] <span style="color:#f92672">=</span> bm25
+    <span style="color:#66d9ef">with</span> open(INDEX, <span style="color:#e6db74">&#39;wb&#39;</span>) <span style="color:#66d9ef">as</span> index_file:
+        pickle<span style="color:#f92672">.</span>dump(index_obj, index_file)
+    <span style="color:#66d9ef">return</span> bm25
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bs4_page_clean</span>(page):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;正则表达式：清除网页标签等无关信息...&#34;</span>)
+    soup <span style="color:#f92672">=</span> BeautifulSoup(page, <span style="color:#e6db74">&#34;html.parser&#34;</span>)
+    [script<span style="color:#f92672">.</span>extract() <span style="color:#66d9ef">for</span> script <span style="color:#f92672">in</span> soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#39;script&#39;</span>)]
+    [style<span style="color:#f92672">.</span>extract() <span style="color:#66d9ef">for</span> style <span style="color:#f92672">in</span> soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#39;style&#39;</span>)]
+    reg1 <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">&#34;&lt;[^&gt;]*&gt;&#34;</span>)
+    content <span style="color:#f92672">=</span> reg1<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">&#39;&#39;</span>, soup<span style="color:#f92672">.</span>prettify())
+    <span style="color:#66d9ef">return</span> str(content)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">jieba_create_index</span>(string):
+    list_word <span style="color:#f92672">=</span> jieba<span style="color:#f92672">.</span>lcut_for_search(string)
+    dict_word_temp <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> list_word:
+        <span style="color:#66d9ef">if</span> word <span style="color:#f92672">in</span> stopwords:
+            <span style="color:#66d9ef">continue</span>
+        dict_word_temp<span style="color:#f92672">.</span>append(word)
+    <span style="color:#66d9ef">return</span> dict_word_temp
+
+
+</code></pre></div><p>在django框架下创建mysite项目，添加view.py对索引文件发起搜索。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+$django-admin startproject mysite
+
+
+</code></pre></div><p>在mysite/mysite/下添加view.py</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#f92672">from</span> django.http <span style="color:#f92672">import</span> HttpResponsePermanentRedirect
+<span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">import</span> re
+<span style="color:#f92672">import</span> jieba
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> pickle
+<span style="color:#f92672">from</span> rank_bm25 <span style="color:#f92672">import</span> BM25Okapi
+
+documents <span style="color:#f92672">=</span> [] <span style="color:#75715e"># = urls</span>
+
+list_search_result <span style="color:#f92672">=</span> []
+   
+list_URL_sport <span style="color:#f92672">=</span> []
+
+INDEX <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;INDEX&#39;</span>
+
+stopwords <span style="color:#f92672">=</span> []
+
+index_obj <span style="color:#f92672">=</span> {}
+
+bm25Model <span style="color:#f92672">=</span> None
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>(request):
+    word <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>GET[<span style="color:#e6db74">&#39;key&#39;</span>][:<span style="color:#ae81ff">20</span>]<span style="color:#f92672">.</span>strip()
+    <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(INDEX):
+        <span style="color:#66d9ef">with</span> open(INDEX, <span style="color:#e6db74">&#39;rb&#39;</span>) <span style="color:#66d9ef">as</span> index_file:
+            index_obj <span style="color:#f92672">=</span> pickle<span style="color:#f92672">.</span>load(index_file)
+            documents <span style="color:#f92672">=</span> index_obj[<span style="color:#e6db74">&#39;d&#39;</span>]
+            bm25Model <span style="color:#f92672">=</span> index_obj[<span style="color:#e6db74">&#39;b&#39;</span>]
+
+            query <span style="color:#f92672">=</span> jieba<span style="color:#f92672">.</span>lcut_for_search(word)
+            url <span style="color:#f92672">=</span> bm25Model<span style="color:#f92672">.</span>get_top_n(query, documents, n<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">0</span>]
+
+    <span style="color:#66d9ef">return</span> HttpResponsePermanentRedirect(url)
+
+
+</code></pre></div><h2 id="补充配置">补充配置</h2>
+<p>只需要run出来INDEX文件后，建立索引了就可以提供搜索服务了。</p>
+<p>再需要的就是将nginx和uwsgi配置好，将请求打到django里。</p>
+<p>总共有四个地方要配置: systemctl nginx uwsgi django。</p>
+<ol>
+<li>django需要修改urls.py，让请求知道访问哪个类：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+    path(<span style="color:#e6db74">&#39;search&#39;</span>, views<span style="color:#f92672">.</span>index, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;index&#39;</span>),
+
+</code></pre></div><ol start="2">
+<li>uwsgi有个ini文件需要指定启动目录用户之类的：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<span style="color:#f92672">[</span>uwsgi<span style="color:#f92672">]</span>
+chdir<span style="color:#f92672">=</span>/var/www/mysite/
+uid<span style="color:#f92672">=</span>www-data
+module<span style="color:#f92672">=</span>mysite.wsgi:application
+master<span style="color:#f92672">=</span>True
+pidfile<span style="color:#f92672">=</span>/tmp/project-master.pid
+vacuum<span style="color:#f92672">=</span>True
+max-requests<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>
+daemonize<span style="color:#f92672">=</span>./uwsgi.log
+socket<span style="color:#f92672">=</span>/tmp/uwsgi.sock
+workers <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+
+</code></pre></div><ol start="3">
+<li>nginx需要配置代理：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+upstream django <span style="color:#f92672">{</span>
+       server unix:/tmp/uwsgi.sock;
+<span style="color:#f92672">}</span>
+
+server <span style="color:#f92672">{</span>
+
+	location /search <span style="color:#f92672">{</span>
+		include /etc/nginx/uwsgi_params;
+		uwsgi_pass django;
+
+  		uwsgi_param Host $host;
+            	uwsgi_param X-Real-IP $remote_addr;
+            	uwsgi_param X-Forwarded-For $proxy_add_x_forwarded_for;
+           	uwsgi_param X-Forwarded-Proto $http_x_forwarded_proto;
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><ol start="4">
+<li>uwsgi重启自动加载也需要自己配置一下：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+Description<span style="color:#f92672">=</span>uWSGI instance to serve mysite
+After<span style="color:#f92672">=</span>network.target
+ 
+<span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+User<span style="color:#f92672">=</span>www-data
+Group<span style="color:#f92672">=</span>www-data
+WorkingDirectory<span style="color:#f92672">=</span>/var/www/mysite/
+ExecStart<span style="color:#f92672">=</span>/usr/local/bin/uwsgi --emperor /var/www/mysite
+Restart<span style="color:#f92672">=</span>always
+KillSignal<span style="color:#f92672">=</span>SIGQUIT
+Type<span style="color:#f92672">=</span>notify
+StandardError<span style="color:#f92672">=</span>syslog
+NotifyAccess<span style="color:#f92672">=</span>all
+ 
+<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+WantedBy<span style="color:#f92672">=</span>multi-user.target
+
+</code></pre></div><ol start="5">
+<li>启动服务，http://xxxx/search?key=上海自来水来自海上找到正确的文档：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+$systemctl start mysite
+$nginx -s reload
+
+</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://blog.54chen.com/tags/jieba"><span class="tag">Jieba</span></a></li>
+        
+          <li><a href="http://blog.54chen.com/tags/bm25"><span class="tag">Bm25</span></a></li>
+        
+      </ul>
+      
+      <div class="next-post">
+	
+</div>
+
+<div class="previous-post">
+	
+	<a class="link-reverse" href="http://blog.54chen.com/post/pomodoro-technique-tool/?ref=footer">在家办公神器推荐:番茄钟工作法工具 »</a>
+	
+</div>
+      <p class="post-copyright">
+      © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2021 五四陈科学院</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://blog.54chen.com/js/bundle.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-6341757-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>
