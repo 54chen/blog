@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aws on 五四陈科学院</title>
+    <link>http://blog.54chen.com/tags/aws/</link>
+    <description>Recent content in aws on 五四陈科学院</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Fri, 13 Aug 2021 19:20:28 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ansible配合aws使用入门</title>
+      <link>http://blog.54chen.com/post/ansible/</link>
+      <pubDate>Fri, 13 Aug 2021 19:20:28 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/ansible/</guid>
+      <description>&lt;p&gt;ansible是一整套的部署脚本，以python实现的，还是很有些粉丝了，在学习过程中，需要了解它和aws配合的使用，特地从头进行了学习，进行了一系列的记录如下。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

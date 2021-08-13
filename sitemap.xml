@@ -3,27 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://blog.54chen.com/tags/ansible/</loc>
+    <lastmod>2021-08-13T19:20:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/post/ansible/</loc>
+    <lastmod>2021-08-13T19:20:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/aws/</loc>
+    <lastmod>2021-08-13T19:20:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/devops/</loc>
+    <lastmod>2021-08-13T19:20:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/post/</loc>
+    <lastmod>2021-08-13T19:20:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/tags/</loc>
+    <lastmod>2021-08-13T19:20:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.54chen.com/</loc>
+    <lastmod>2021-08-13T19:20:28+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.54chen.com/tags/bm25/</loc>
     <lastmod>2021-08-10T19:18:21+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://blog.54chen.com/tags/jieba/</loc>
-    <lastmod>2021-08-10T19:18:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/post/</loc>
-    <lastmod>2021-08-10T19:18:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/tags/</loc>
-    <lastmod>2021-08-10T19:18:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.54chen.com/</loc>
     <lastmod>2021-08-10T19:18:21+08:00</lastmod>
   </url>
   

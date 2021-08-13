@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Ansible配合aws使用入门</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="John" />
+  <meta name="description" content="ansible是一整套的部署脚本，以python实现的，还是很有些粉丝了，在学习过程中，需要了解它和aws配合的使用，特地从头进行了学习，进行了一系列的记录如下。
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="Ansible配合aws使用入门" />
+    <meta name="twitter:description" content="ansible是一整套的部署脚本，以python实现的，还是很有些粉丝了，在学习过程中，需要了解它和aws配合的使用，特地从头进行了学习，进行了一系列的记录如下。
+" />
+    <meta name="twitter:image" content="http://blog.54chen.com/img/poster.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Ansible配合aws使用入门" />
+  <meta property="og:description" content="ansible是一整套的部署脚本，以python实现的，还是很有些粉丝了，在学习过程中，需要了解它和aws配合的使用，特地从头进行了学习，进行了一系列的记录如下。
+" />
+  <meta property="og:url" content="http://blog.54chen.com/post/ansible/" />
+  <meta property="og:image" content="http://blog.54chen.com/img/poster.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+
+<link rel="canonical" href="http://blog.54chen.com/post/ansible/" />
+<link rel="alternative" href="http://blog.54chen.com/index.xml" title="五四陈科学院" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<link href="http://blog.54chen.com/img/favicon-16x16.png" rel="icon">
+<link rel="apple-touch-icon" href="http://blog.54chen.com/img/favicon-32x32.png" />
+<link rel="shortcut icon" href="http://blog.54chen.com/img/favicon.ico" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://blog.54chen.com/css/bundle.css?1" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://blog.54chen.com/img/logo.jpg" alt="Avatar">
+  
+  <h2 class="title">五四陈科学院</h2>
+  
+  <p class="subtitle">相信科学，分享技术</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://blog.54chen.com/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://2014.54chen.com">Before 2018</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/tags/">Tags</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://blog.54chen.com/about/">About</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+	  <img src="http://blog.54chen.com/img/post/mp.png" width="288px">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:cc0cc@126.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/54chen" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/img/post/mp.png" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://blog.54chen.com/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Ansible配合aws使用入门</h1>
+      <p class="post-meta">@John · Aug 13, 2021 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>ansible是一整套的部署脚本，以python实现的，还是很有些粉丝了，在学习过程中，需要了解它和aws配合的使用，特地从头进行了学习，进行了一系列的记录如下。</p>
+<h2 id="安装">安装</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+$pip3 install virtualenv
+$virtualenv -p /usr/bin/python3 myEnv
+$source myEnv/bin/activate
+
+<span style="color:#66d9ef">$(</span>myEnv<span style="color:#66d9ef">)</span> xx $ pip3 install awscli
+pip3 install ansible
+pip3 install boto3
+pip3 install botocore
+pip3 install boto
+
+</code></pre></div><p>boto是aws的python api实现。</p>
+<h2 id="inventory-file">inventory file</h2>
+<p>定义所有的服务器ip 用 ansible -i指定。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$vim <span style="color:#a6e22e">hosts</span>
+
+[<span style="color:#a6e22e">local</span>]
+<span style="color:#a6e22e">localhost</span> <span style="color:#a6e22e">ansible_connection</span><span style="color:#f92672">=</span><span style="color:#a6e22e">local</span> <span style="color:#a6e22e">ansible_python_interpreter</span><span style="color:#f92672">=/</span><span style="color:#a6e22e">home</span><span style="color:#f92672">/</span><span style="color:#a6e22e">chenzhen</span><span style="color:#f92672">/</span><span style="color:#a6e22e">compx527</span><span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">python</span>
+
+[<span style="color:#a6e22e">myserver</span>]
+<span style="color:#ae81ff">2.2</span><span style="color:#f92672">.</span><span style="color:#ae81ff">2.2</span>
+
+[<span style="color:#a6e22e">webservers</span>]
+<span style="color:#75715e">#1.1.1.1  ansible_ssh_private_key_file=/home/ubuntu/.ssh/oof1-ec2-key.pem
+</span><span style="color:#75715e"></span>
+
+</code></pre></div><p>支持对不同服务器进行分组管理。下面的例子在调webservers这个组的机器。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+ansible -i inventories/hosts webservers -m ping
+
+</code></pre></div><h2 id="模块">模块</h2>
+<p>-i指定机器列表，-m指定运行的模块，还可以传参数，直接在后面加。ansible支持核心模块、额外模块和自定义模块。</p>
+<p>ping模板并不是ICMP的ping，是ansibe自己实现的ping，用来检测server是否可用可登录且有python。</p>
+<p>要开发自己的模块，需要会python和json包，返回的都是json。执行ansible时传入的参数都以key=value的串传到python脚本里，需要自己解析。用shlex可以简单读入所有空格间隔的串，再在里面找=号。</p>
+<p>在后面提到的playbooks中，大量使用模块以下知识：</p>
+<p>很重要的是模块要有幂等性，就是不怕多次执行。</p>
+<p>有两个特殊的module一个是command一个是shell，它们不是key=value的，面是直接像正常在Linux用。执行成功返回非0。</p>
+<p>module里的action太长的话，可以像python一样折行缩进。一种特殊的action是template，用来发配置文件的。</p>
+<h2 id="playbooks">playbooks</h2>
+<p>ansible直接命令一个一个操作执行的过程是ad-hoc的执行，playbooks提供了编排的能力，可以把一堆操作顺序配置起来。比如说，上传代码+复制配置+重启tomcat+重启nginx等放在一个playbooks里，确保每个执行成功后才执行下一个。下例是一个play（多个play在一起形成playbooks)。一个play里可以多个task，这多个task都是顺序的，必须在一个或一批机器完成才执行下一个task。一个task就是一个模块。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+---   
+- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">webservers   </span>
+ <span style="color:#f92672">vars</span>:  <span style="color:#75715e"># vars定义的变量，可以后文中使用 {{http_port}}。</span>
+   <span style="color:#f92672">http_port</span>: <span style="color:#ae81ff">80</span>    
+   <span style="color:#f92672">max_clients</span>: <span style="color:#ae81ff">200</span>
+ <span style="color:#f92672">romote_user</span>: <span style="color:#ae81ff">root</span>
+<span style="color:#75715e"># 以上指定了host和user，支持通配符啥的代表一批机器，sudo: yes 给sudo权限。再加sudo_user: xxx 切到其他用户也ok。</span>
+ <span style="color:#f92672">tasks</span>:  
+ - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">update nginx</span>
+   <span style="color:#f92672">yum</span>: <span style="color:#ae81ff">pkg=nginx state=latest</span>
+<span style="color:#75715e"># 实际上，到每个taks里，还可以指定运行的远程用户，还是remote_user: xxx。</span>
+ - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">write config</span>
+   <span style="color:#f92672">template</span>: <span style="color:#ae81ff">src=http://blog.54chen.com/srv/nginx.js dest=/etc/nginx/nginx.conf</span>
+   <span style="color:#f92672">notify</span>:
+   - <span style="color:#ae81ff">restart nginx</span>
+ - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">ensure nginx is running</span>
+   <span style="color:#f92672">service</span>: <span style="color:#ae81ff">name=nginx state=started</span>
+ <span style="color:#f92672">handlers</span>:
+   - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">restart nginx</span>
+     <span style="color:#f92672">service</span>: <span style="color:#ae81ff">name=nginx state=restarted</span>
+ 
+
+</code></pre></div><p>handlers就像函数一样，把一群task放在一起，配合notify使用。以上文件notify配合handlers翻译为：当template指定的文件内容被改动时，重启nginx。</p>
+<p>综上，关键的因素有：hosts\play\task\template\notify\handlers。</p>
+<p>对应基本上就是：机器\任务列表\单个操作\配置文件\配置变化\配置变化后的定义行动。</p>
+<h2 id="run-a-playbook">Run a Playbook</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+ansible-playbook main.yml -f <span style="color:#ae81ff">10</span>
+
+</code></pre></div><p>如果想看影响哪些机器，可以执行：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+ansible-playbook main.yml --list-hosts
+
+</code></pre></div><h2 id="重用大法roles--include">重用大法：roles &amp; include</h2>
+<p>roles角色，主要是考虑以角色来区分操作，操作DB和操作nginx肯定是不一样的任务。</p>
+<p>include主要是为了重用各处的task或者play。</p>
+<p>简单说，关系就是 roles&ndash;&gt; include &ndash;&gt; m * play + n * task + x * play and so on。</p>
+<p>roles其实是一些约定大于配置的设计，一旦使用了role，则在固定的目录下寻找文件，如果有则include，如果没有也不报错。roles/x/task|handlers|vars|meta|files|templates/main.yml。
+当然也可以直接指定目录，这就复杂一点了。</p>
+<p>还支持在role前role后定义 pre_taks和post_tasks。</p>
+<p>通过dependencies来定义 不同的role的依赖关系或各种公共配置。进而控制先后顺序，比如先安装db，后初始化db，再安装php，上传代码，等等。</p>
+<p>&ndash;tags xxx 在playbook使用时，会去只运行关键字一致的部分代码。</p>
+<p>defaults/main.yml存的是变量，其他大多是存的module(tasks)。</p>
+<h2 id="帮助文档">帮助文档</h2>
+<p>action众多，难免有不认识的，所以这个命令犹为关键，ansible-doc ping。</p>
+<p>也可以直接写python代码调用ansible，无缝。</p>
+<p><a href="https://docs.ansible.com">https://docs.ansible.com</a>  直接按module搜，非常有用。</p>
+<h2 id="aws协作">aws协作</h2>
+<p>有两个办法上传文件到s3：command + aws c3 cp  &amp;&amp; s3_sync</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://blog.54chen.com/tags/ansible"><span class="tag">Ansible</span></a></li>
+        
+          <li><a href="http://blog.54chen.com/tags/devops"><span class="tag">Devops</span></a></li>
+        
+          <li><a href="http://blog.54chen.com/tags/aws"><span class="tag">Aws</span></a></li>
+        
+      </ul>
+      
+      <div class="next-post">
+	
+</div>
+
+<div class="previous-post">
+	
+	<a class="link-reverse" href="http://blog.54chen.com/post/chinese-search/?ref=footer">利用python,jieba,bm25,django,nginx半小时打造一个基本可用的中文全文检索... »</a>
+	
+</div>
+      <p class="post-copyright">
+      © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2021 五四陈科学院</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://blog.54chen.com/js/bundle.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-6341757-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>
