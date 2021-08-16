@@ -122,6 +122,8 @@ ansible-playbook main.yml -f 10
 
 ```
 
+-f 10代表以10个并行跑，速度更快。默认为5。
+
 如果想看影响哪些机器，可以执行：
 
 ```shell
@@ -165,3 +167,7 @@ aws协作
 -------
 
 有两个办法上传文件到s3：command + aws c3 cp  && s3_sync
+
+如果使用了command + aws 命令，必须注意先运行 aws configure。
+
+inventories/hosts总是有localhost的原因是为了在本地dry run。
