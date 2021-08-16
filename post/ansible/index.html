@@ -290,7 +290,8 @@ ansible -i inventories/hosts webservers -m ping
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
 ansible-playbook main.yml -f <span style="color:#ae81ff">10</span>
 
-</code></pre></div><p>如果想看影响哪些机器，可以执行：</p>
+</code></pre></div><p>-f 10代表以10个并行跑，速度更快。默认为5。</p>
+<p>如果想看影响哪些机器，可以执行：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
 ansible-playbook main.yml --list-hosts
 
@@ -309,7 +310,9 @@ ansible-playbook main.yml --list-hosts
 <p>也可以直接写python代码调用ansible，无缝。</p>
 <p><a href="https://docs.ansible.com">https://docs.ansible.com</a>  直接按module搜，非常有用。</p>
 <h2 id="aws协作">aws协作</h2>
-<p>有两个办法上传文件到s3：command + aws c3 cp  &amp;&amp; s3_sync</p></article>
+<p>有两个办法上传文件到s3：command + aws c3 cp  &amp;&amp; s3_sync</p>
+<p>如果使用了command + aws 命令，必须注意先运行 aws configure。</p>
+<p>inventories/hosts总是有localhost的原因是为了在本地dry run。</p></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
