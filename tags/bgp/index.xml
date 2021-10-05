@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BGP on 五四陈科学院</title>
+    <link>http://blog.54chen.com/tags/bgp/</link>
+    <description>Recent content in BGP on 五四陈科学院</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Tue, 05 Oct 2021 14:38:26 +0800</lastBuildDate><atom:link href="http://blog.54chen.com/tags/bgp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搞懂facebook是咋从互联网上消失的</title>
+      <link>http://blog.54chen.com/post/understand-facebook/</link>
+      <pubDate>Tue, 05 Oct 2021 14:38:26 +0800</pubDate>
+      
+      <guid>http://blog.54chen.com/post/understand-facebook/</guid>
+      <description>&lt;p&gt;Facebook史上最严重宕机，全网宕机七小时，高管道歉，股价下跌。不过还好，对我们影响不大。&lt;/p&gt;
+&lt;p&gt;文章来源于cloudflare的技术博客 &lt;a href=&#34;https://blog.cloudflare.com/october-2021-facebook-outage/&#34;&gt;https://blog.cloudflare.com/october-2021-facebook-outage/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
